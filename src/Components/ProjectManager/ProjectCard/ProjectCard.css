@@ -1,0 +1,21 @@
+.project-card-container{
+    background-color: white;
+    height: 200px;
+    width: 300px;
+    margin-top: 20px;
+   margin-right: 38px;
+    margin-left: 38px;
+    display: inline-block;
+    padding: 10px;
+}
+
+
+.project-title{
+font-family: Roboto;
+font-weight: bold;
+font-size: 20px;
+}
+
+.project-description{
+    font-family: "Fira Sans";
+}
