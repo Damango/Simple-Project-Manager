@@ -1,0 +1,46 @@
+.task-card-container{
+    position: relative;
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    border: 1px solid gray;
+    width: 80%;
+    left: 50%;
+    top: 10px;
+    transform: translateX(-50%);
+    transition: 0.3s;
+}
+
+.task-card-container:hover{
+    cursor: pointer;
+    background-color: #f5f5f5;
+}
+
+
+.task-text{
+    font-family: 'Fira Sans';
+    font-weight: bold;
+    font-size: 22px;
+    color: #2f3640;
+    margin-bottom: 15px;
+}
+
+.task-description{
+    margin-bottom: 15px;
+}
+
+.task-labels-container{
+    
+}
+
+.label{
+    position: relative;
+    margin-top: 15px;
+    background-color: #1856ff;
+    display: inline-block;
+    border-radius: 10px;
+    padding: 4px 10px;
+    margin-right: 10px;
+    font-family: "Poppins";
+    color: white;
+}
