@@ -1,0 +1,136 @@
+.create-task-modal-container{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    background-color: white;
+    width: 600px;
+    height: 400px;
+    box-shadow: 0px 0px 10px black;
+    padding: 20px;
+}
+
+.create-task-title{
+    font-family: 'Montserrat';
+    font-size: 30px;
+    color: #2f3640;
+    font-weight: bold;
+}
+
+.create-task-title-container input{
+    margin-top: 20px;
+    width: 350px;
+    padding: 10px;
+    font-size: 18px;
+    border: 1px solid #2f3640;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+
+.create-task-title-container input:focus{
+    outline-color: #1751f0;
+}
+
+.create-task-description-container{}
+
+.create-task-description{
+    margin-top: 20px;
+    font-family: 'Montserrat';
+    font-size: 30px;
+    color: #2f3640;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+
+.create-task-description-container textarea{
+    resize: none;
+   padding: 10px;
+   font-size: 18px;
+   width: 350px !important;
+
+}
+
+.label-selection-container{
+    position: absolute;
+    background-color: white;
+    
+    width: 200px;
+    height: 100%;
+    right: 0px;
+    top: 0px;
+    border-left: 1px solid black;
+}
+
+.label-selection-title{
+    margin-left: 20px;
+    margin-top: 20px;
+    font-family: 'Montserrat';
+    font-weight: bold;
+    font-size: 22px;
+    color: #2f3640;
+}
+
+.submit-button{
+    position: absolute;
+    background-color: #1751f0;
+    color: white;
+    font-family: Poppins;
+    border-style: none;
+    padding: 5px 15px;
+    border-radius: 5px;
+    font-size: 20px;
+    bottom: 20px;
+    transition: 0.3s;
+    outline: none;
+    width: 370px;
+    
+}
+
+.submit-button:hover{
+    cursor: pointer;
+    background-color: #1137a0;
+}
+
+.create-label-list{
+    position: relative;
+   display: flex;
+   flex-direction: column;
+align-items: center;
+
+   
+}
+
+.create-label{
+    position: relative;
+    text-align: center;
+  display: inline-block!important;
+    padding: 5px 15px;
+    font-family: "Open Sans";
+    font-size: 15px;
+    color: white;
+    font-weight: 600;
+    border-radius: 10px;
+    width: 130px;
+    margin-top: 20px;
+
+}
+
+
+
+.development-label{
+    background-color: #1751f0;
+}
+.design-label{
+    background-color: purple;
+}
+
+.bussiness-label{
+    background-color: orange;
+}
+
+.engineering-label{
+    background-color: #e74c3c;
+}
+
+

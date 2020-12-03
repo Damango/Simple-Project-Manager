@@ -29,6 +29,28 @@ const ProjectManager = (props) => {
                         'Develop UI interface for submitting Tasks'
                     ],
                     comments: []
+                },
+                {
+                    taskText: "Develop Machine Learning Stuff",
+                    taskDescription: "A reallt short description how you might go about fixing the UI bugs",
+                    taskLabels: ["Development"],
+
+                    subTasks: [
+                        'Creating ML Models',
+                        'Develop UI interface for submitting Tasks'
+                    ],
+                    comments: []
+                },
+                {
+                    taskText: "UI fixes for Front End",
+                    taskDescription: "A reallt short description how you might go about fixing the UI bugs",
+                    taskLabels: ["Development", "Design"],
+
+                    subTasks: [
+                        'Make UI mockup for tasks',
+                        'Develop UI interface for submitting Tasks'
+                    ],
+                    comments: []
                 }
             ],
             inProgressTasks: [
