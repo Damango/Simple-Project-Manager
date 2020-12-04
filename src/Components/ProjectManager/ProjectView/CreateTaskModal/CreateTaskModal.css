@@ -48,6 +48,8 @@
    padding: 10px;
    font-size: 18px;
    width: 350px !important;
+   height: 130px;
+   border-radius: 5px;
 
 }
 
@@ -71,6 +73,27 @@
     color: #2f3640;
 }
 
+.cancel-button{
+    position: absolute;
+    background-color: #e74c3c;
+    color: white;
+    font-family: Poppins;
+    border-style: none;
+    padding: 5px 15px;
+    border-radius: 5px;
+    font-size: 20px;
+    bottom: 20px;
+    transition: 0.3s;
+    outline: none;
+    width: 185px;
+    left: 210px;
+}
+
+.cancel-button:hover{
+    background-color: #88271c;
+    cursor: pointer;
+}
+
 .submit-button{
     position: absolute;
     background-color: #1751f0;
@@ -83,7 +106,7 @@
     bottom: 20px;
     transition: 0.3s;
     outline: none;
-    width: 370px;
+    width: 185px;
     
 }
 

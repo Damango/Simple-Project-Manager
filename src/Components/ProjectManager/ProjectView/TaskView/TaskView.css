@@ -25,9 +25,18 @@
     font-family: "Poppins";
     font-weight: 500;
     font-size: 17px;
+    width: 90%;
+}
 
+.task-view-left-side{
+    position: relative;
     width: 75%;
+  
 
+}
+
+.task-view-right-side{
+    
 }
 
 
@@ -52,7 +61,6 @@
 
 .task-sub-task-container{
     position: relative;
-
     height: 500px;
     width: 75%;
     margin-top: 30px;
@@ -60,9 +68,40 @@
 
 .task-comments-section{
     position: relative;
-   
     height: 400px;
     width: 75%;
-
     margin-top: 30px;
 }
+
+
+.delete-task-button{
+    background-color: #EA2027;
+ 
+}
+
+
+.delete-task-button:hover{
+    background-color: #af1217;
+    cursor: pointer;
+}
+
+
+.move-to-task-button{
+    background-color: #1abc9c;
+}
+
+.task-view-button{
+   
+    border-radius: 5px;
+    color: white;
+    font-family: 'Open Sans';
+    font-weight: bold;
+    border-style: none;
+    padding: 5px 15px;
+    font-size: 22px;
+    margin-right: 20px;
+    transition: 0.3s;
+}
+
+
+

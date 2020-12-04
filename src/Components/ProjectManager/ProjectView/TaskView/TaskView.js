@@ -14,6 +14,12 @@ const TaskView = (props) => {
 
     return (<animated.div style={taskViewStyle} className="task-view-container">
         <div className="close-task" onClick={closeTask}>X</div>
+
+
+
+
+
+
         <div className="task-view-title">{props.data.taskText}</div>
         <div className="task-view-description">{props.data.taskDescription}</div>
         <div className="task-sub-task-container">
@@ -24,9 +30,18 @@ const TaskView = (props) => {
 
         </div>
 
+        <button className="move-to-task-button task-view-button">Move To </button>
+        <button className="delete-task-button task-view-button" onClick={deleteTask}>Delete</button>
+
+
 
 
     </animated.div>);
+
+
+    function deleteTask() {
+        props.deleteTask(props.data)
+    }
 
 
 
