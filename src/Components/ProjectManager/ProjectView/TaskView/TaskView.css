@@ -66,6 +66,42 @@
     margin-top: 30px;
 }
 
+
+.sub-task-title{
+    font-family: 'Fira Sans';
+    font-weight: bold;
+    color: #2f3640;
+    font-size: 22px;
+}
+
+
+.create-sub-task-button{
+    padding: 5px 15px;
+    width: 220px;
+    text-align: center;
+    background-color: #1abc9c;
+    color: white;
+    font-family: 'Open Sans';
+    font-size: 18px;
+    font-weight: bold;
+    border-style: none;
+    border-radius: 5px;
+    margin-top: 10px;
+    outline: none;
+    transition: 0.3s;
+}
+
+.create-sub-task-button:hover{
+    background-color: #0c705c;
+    cursor: pointer;
+}
+
+.add-step-container input{
+    padding: 8px 15px;
+    margin-top: 15px;
+    border-radius: 5px;
+}
+
 .task-comments-section{
     position: relative;
     height: 400px;

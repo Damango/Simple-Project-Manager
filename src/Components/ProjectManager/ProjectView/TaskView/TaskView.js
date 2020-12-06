@@ -10,6 +10,9 @@ const TaskView = (props) => {
         }
     })
 
+    const [addStepView, setAddStepView] = useState(0);
+    const [taskSteps, setTaskSteps] = useState();
+
 
 
     return (<animated.div style={taskViewStyle} className="task-view-container">
@@ -23,7 +26,10 @@ const TaskView = (props) => {
         <div className="task-view-title">{props.data.taskText}</div>
         <div className="task-view-description">{props.data.taskDescription}</div>
         <div className="task-sub-task-container">
+            <div className="sub-task-title">Task Steps</div>
             {props.data.subTasks.map((task) => <SubTasks data={task} />)}
+            <button className="create-sub-task-button" onClick={createStep}>Add Step +</button>
+            {renderAddStep()}
 
         </div>
         <div className="task-comments-section">
@@ -34,9 +40,38 @@ const TaskView = (props) => {
         <button className="delete-task-button task-view-button" onClick={deleteTask}>Delete</button>
 
 
-
-
     </animated.div>);
+
+
+
+
+    function createStep() {
+
+        if (addStepView === 0) {
+            setAddStepView(1)
+        }
+        else {
+            setAddStepView(0)
+        }
+
+    }
+
+
+    function renderAddStep() {
+
+        if (addStepView === 1) {
+            return (<div className="add-step-container">
+
+                <input type="text" placeholder="Step Text" />
+            </div>)
+        }
+        else {
+            return ''
+        }
+
+    }
+
+
 
 
     function deleteTask() {
