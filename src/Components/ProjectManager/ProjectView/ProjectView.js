@@ -27,7 +27,7 @@ const ProjectView = (props) => {
             <div className="project-title"> {props.projectData.projectText}</div>
             <div className="task-cards-container">
                 <div className="task-todos tasks-container">
-                    {todos.map((todo) => <TaskCard taskData={todo} changeTaskView={changeTaskView} />)}
+                    {todos.map((todo) => <TaskCard taskData={todo} changeTaskView={changeTaskView} projectID={props.projectData.projectID} />)}
                     <button className="create-task-button" onClick={openCreateTask}>Create Task +</button>
                 </div>
                 <div className="task-in-progress tasks-container"></div>
@@ -93,17 +93,21 @@ const ProjectView = (props) => {
     }
 
     function changeTaskView(data) {
+        setChangeNumber(changeNumber + 1)
         setTaskData(data);
         setTaskView(0)
         setTimeout(function () {
             setTaskView(1);
         }, 1)
 
+
+
     }
+
 
     function renderTaskView() {
         if (taskView === 1) {
-            return (<TaskView data={taskData} closeTaskView={closeTaskView} deleteTask={deleteTask} />)
+            return (<TaskView projectID={props.projectData.projectID} data={taskData} closeTaskView={closeTaskView} deleteTask={deleteTask} />)
         }
         else {
             return ''

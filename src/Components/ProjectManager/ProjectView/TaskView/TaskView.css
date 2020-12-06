@@ -61,9 +61,10 @@
 
 .task-sub-task-container{
     position: relative;
-    height: 500px;
+    height: auto;
     width: 75%;
     margin-top: 30px;
+
 }
 
 
@@ -72,6 +73,22 @@
     font-weight: bold;
     color: #2f3640;
     font-size: 22px;
+}
+
+.sub-task-viewer{
+    margin-top: 10px;
+    border: 1px solid red;
+    display: inline-block;
+}
+
+.sub-task-view-selector{
+    display: inline-block;
+    padding: 5px 15px;
+ 
+    font-family: 'Fira Sans';
+    border: 1px solid black;
+    margin-right: 10px;
+
 }
 
 

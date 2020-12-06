@@ -23,7 +23,16 @@ const TaskCard = (props) => {
 
 
     function openTasks() {
-        props.changeTaskView(props.taskData);
+
+        let taskData = JSON.parse(localStorage.getItem('project-manager-simple'))
+        taskData = taskData[props.projectID];
+        let i;
+        for (i = 0; i < taskData.toDoTasks.length; i++) {
+            if (taskData.toDoTasks[i].taskID === props.taskData.taskID) {
+                props.changeTaskView(taskData.toDoTasks[i]);
+            }
+        }
+
     }
 }
 
