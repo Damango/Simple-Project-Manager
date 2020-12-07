@@ -31,7 +31,7 @@ const TaskView = (props) => {
                 <div className="sub-task-view-selector">Open</div>
                 <div className="sub-task-view-selector">Archived</div>
             </div>
-            {taskSteps.map((task) => <SubTasks data={task} />)}
+            {taskSteps.map((task) => <SubTasks data={task} taskID={props.data.taskID} projectID={props.projectID} removeStep={removeStep} />)}
             <button className="create-sub-task-button" onClick={createStep}>Add Step +</button>
             {renderAddStep()}
 
@@ -67,21 +67,83 @@ const TaskView = (props) => {
 
         let oldTaskView;
         let newTaskView;
+        let newStepData = {
+            subTaskText: document.querySelector('.add-step-input').value,
+            subTaskID: Math.floor(Math.random() * 10000)
+        }
         let stepText = document.querySelector('.add-step-input').value;
         oldData = oldData[props.projectID];
-        for (i = 0; i < oldData.toDoTasks.length; i++) {
-            if (oldData.toDoTasks[i].taskID === props.data.taskID) {
-                oldTaskView = oldData.toDoTasks[i];
-                oldTaskView.subTasks.push(stepText);
-                newTaskView = oldTaskView;
-                oldData.toDoTasks[i] = oldTaskView;
-                largeOldData[props.projectID].toDoTasks[i] = newTaskView;
-                localStorage.setItem('project-manager-simple', JSON.stringify(largeOldData));
-                setTaskSteps(newTaskView.subTasks);
+
+
+
+        if (props.data.taskType === 'todo') {
+
+            for (i = 0; i < oldData.toDoTasks.length; i++) {
+                if (oldData.toDoTasks[i].taskID === props.data.taskID) {
+                    oldTaskView = oldData.toDoTasks[i];
+                    oldTaskView.subTasks.push(newStepData);
+                    newTaskView = oldTaskView;
+                    oldData.toDoTasks[i] = oldTaskView;
+                    largeOldData[props.projectID].toDoTasks[i] = newTaskView;
+                    localStorage.setItem('project-manager-simple', JSON.stringify(largeOldData));
+                    setTaskSteps(newTaskView.subTasks);
+                }
+            }
+        }
+
+        if (props.data.taskType === 'in-progress') {
+
+            for (i = 0; i < oldData.inProgressTasks.length; i++) {
+                if (oldData.inProgressTasks[i].taskID === props.data.taskID) {
+                    oldTaskView = oldData.inProgressTasks[i];
+                    oldTaskView.subTasks.push(newStepData);
+                    newTaskView = oldTaskView;
+                    oldData.toDoTasks[i] = oldTaskView;
+                    largeOldData[props.projectID].inProgressTasks[i] = newTaskView;
+                    localStorage.setItem('project-manager-simple', JSON.stringify(largeOldData));
+                    setTaskSteps(newTaskView.subTasks);
+                }
+            }
+        }
+
+        if (props.data.taskType === 'stuck') {
+
+            for (i = 0; i < oldData.stuckTasks.length; i++) {
+                if (oldData.stuckTasks[i].taskID === props.data.taskID) {
+                    oldTaskView = oldData.stuckTasks[i];
+                    oldTaskView.subTasks.push(newStepData);
+                    newTaskView = oldTaskView;
+                    oldData.stuckTasks[i] = oldTaskView;
+                    largeOldData[props.projectID].stuckTasks[i] = newTaskView;
+                    localStorage.setItem('project-manager-simple', JSON.stringify(largeOldData));
+                    setTaskSteps(newTaskView.subTasks);
+                }
             }
         }
 
 
+
+        if (props.data.taskType === 'completed') {
+
+            for (i = 0; i < oldData.completedTasks.length; i++) {
+                if (oldData.completedTasks[i].taskID === props.data.taskID) {
+                    oldTaskView = oldData.completedTasks[i];
+                    oldTaskView.subTasks.push(newStepData);
+                    newTaskView = oldTaskView;
+                    oldData.completedTasks[i] = oldTaskView;
+                    largeOldData[props.projectID].completedTasks[i] = newTaskView;
+                    localStorage.setItem('project-manager-simple', JSON.stringify(largeOldData));
+                    setTaskSteps(newTaskView.subTasks);
+                }
+            }
+        }
+
+
+    }
+
+    function removeStep(data) {
+        setTaskSteps(data.subTasks);
+        console.log(data.subTasks);
     }
 
 

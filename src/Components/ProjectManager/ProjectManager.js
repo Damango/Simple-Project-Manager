@@ -27,8 +27,14 @@ const ProjectManager = (props) => {
                         taskLabels: ["Development", "Design"],
 
                         subTasks: [
-                            'Make UI mockup for tasks',
-                            'Develop UI interface for submitting Tasks'
+                            {
+                                subTaskText: 'Make UI mockup for tasks',
+                                subTaskID: Math.floor(Math.random() * 10000)
+                            },
+                            {
+                                subTaskText: 'Develop new Apps',
+                                subTaskID: Math.floor(Math.random() * 10000)
+                            }
                         ],
                         comments: [],
                         taskID: 0
@@ -170,6 +176,7 @@ const ProjectManager = (props) => {
 
         ]))
     }
+
 
 
 

@@ -63,6 +63,12 @@
     overflow-y: scroll;
 }
 
+.task-container-header{
+    position: absolute;
+    top: -30px;
+
+}
+
 
 
 .create-task-button{

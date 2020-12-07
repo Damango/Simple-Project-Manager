@@ -27,11 +27,43 @@ const TaskCard = (props) => {
         let taskData = JSON.parse(localStorage.getItem('project-manager-simple'))
         taskData = taskData[props.projectID];
         let i;
-        for (i = 0; i < taskData.toDoTasks.length; i++) {
-            if (taskData.toDoTasks[i].taskID === props.taskData.taskID) {
-                props.changeTaskView(taskData.toDoTasks[i]);
+
+        if (props.taskData.taskType === 'todo') {
+            for (i = 0; i < taskData.toDoTasks.length; i++) {
+                if (taskData.toDoTasks[i].taskID === props.taskData.taskID) {
+                    props.changeTaskView(taskData.toDoTasks[i]);
+                }
+
             }
         }
+
+        if (props.taskData.taskType === 'in-progress') {
+            for (i = 0; i < taskData.inProgressTasks.length; i++) {
+                if (taskData.inProgressTasks[i].taskID === props.taskData.taskID) {
+                    props.changeTaskView(taskData.inProgressTasks[i]);
+                }
+
+            }
+        }
+
+        if (props.taskData.taskType === 'stuck') {
+            for (i = 0; i < taskData.stuckTasks.length; i++) {
+                if (taskData.stuckTasks[i].taskID === props.taskData.taskID) {
+                    props.changeTaskView(taskData.stuckTasks[i]);
+                }
+
+            }
+        }
+
+        if (props.taskData.taskType === 'completed') {
+            for (i = 0; i < taskData.completedTasks.length; i++) {
+                if (taskData.completedTasks[i].taskID === props.taskData.taskID) {
+                    props.changeTaskView(taskData.completedTasks[i]);
+                }
+
+            }
+        }
+
 
     }
 }

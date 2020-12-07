@@ -26,14 +26,35 @@ const ProjectView = (props) => {
 
             <div className="project-title"> {props.projectData.projectText}</div>
             <div className="task-cards-container">
-                <div className="task-todos tasks-container">
-                    {todos.map((todo) => <TaskCard taskData={todo} changeTaskView={changeTaskView} projectID={props.projectData.projectID} />)}
-                    <button className="create-task-button" onClick={openCreateTask}>Create Task +</button>
-                </div>
-                <div className="task-in-progress tasks-container"></div>
-                <div className="task-stuck tasks-container"></div>
-                <div className="task-complete tasks-container"></div>
+                <div className="tasks-wrapper">
+                    <div className="task-container-header">To Do</div>
+                    <div className="task-todos tasks-container">
 
+                        {todos.map((todo) => <TaskCard taskData={todo} changeTaskView={changeTaskView} projectID={props.projectData.projectID} />)}
+                        <button className="create-task-button" onClick={openCreateTask}>Create Task +</button>
+                    </div>
+                </div>
+                <div className="tasks-wrapper">
+                    <div className="task-container-header">In Progress</div>
+                    <div className="task-in-progress tasks-container">
+
+                        {inProgress.map((inProgress) => <TaskCard taskData={inProgress} changeTaskView={changeTaskView} projectID={props.projectData.projectID} />)}
+                    </div>
+                </div>
+                <div className="tasks-wrapper">
+                    <div className="task-container-header">Stuck</div>
+                    <div className="task-stuck tasks-container">
+
+                        {stuck.map((inProgress) => <TaskCard taskData={inProgress} changeTaskView={changeTaskView} projectID={props.projectData.projectID} />)}
+                    </div>
+                </div>
+                <div className="tasks-wrapper">
+                    <div className="task-container-header">Complete</div>
+                    <div className="task-complete tasks-container">
+
+                        {completed.map((inProgress) => <TaskCard taskData={inProgress} changeTaskView={changeTaskView} projectID={props.projectData.projectID} />)}
+                    </div>
+                </div>
             </div>
         </div>
         {renderCreateTask()}
@@ -68,6 +89,57 @@ const ProjectView = (props) => {
                 }
             }
             storage[props.projectData.projectID].toDoTasks = oldList;
+
+            setTodos(oldList);
+            setChangeNumber(changeNumber + 2);
+            setTaskView(0)
+
+            localStorage.setItem('project-manager-simple', JSON.stringify(storage));
+        }
+
+        if (data.taskType === 'in-progress') {
+            oldList = props.projectData.inProgressTasks;
+
+            for (i = 0; i < oldList.length; i++) {
+                if (oldList[i].taskID === data.taskID) {
+                    oldList.splice(i, 1);
+                }
+            }
+            storage[props.projectData.projectID].inProgressTasks = oldList;
+
+            setTodos(oldList);
+            setChangeNumber(changeNumber + 2);
+            setTaskView(0)
+
+            localStorage.setItem('project-manager-simple', JSON.stringify(storage));
+        }
+
+        if (data.taskType === 'stuck') {
+            oldList = props.projectData.stuckTasks;
+
+            for (i = 0; i < oldList.length; i++) {
+                if (oldList[i].taskID === data.taskID) {
+                    oldList.splice(i, 1);
+                }
+            }
+            storage[props.projectData.projectID].stuckTasks = oldList;
+
+            setTodos(oldList);
+            setChangeNumber(changeNumber + 2);
+            setTaskView(0)
+
+            localStorage.setItem('project-manager-simple', JSON.stringify(storage));
+        }
+
+        if (data.taskType === 'completed') {
+            oldList = props.projectData.completedTasks;
+
+            for (i = 0; i < oldList.length; i++) {
+                if (oldList[i].taskID === data.taskID) {
+                    oldList.splice(i, 1);
+                }
+            }
+            storage[props.projectData.projectID].completedTasks = oldList;
 
             setTodos(oldList);
             setChangeNumber(changeNumber + 2);
