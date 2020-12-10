@@ -154,6 +154,7 @@
 
 .delete-task-button{
     background-color: #EA2027;
+    left: 150px;
  
 }
 
@@ -169,7 +170,7 @@
 }
 
 .task-view-button{
-   
+   position: absolute;
     border-radius: 5px;
     color: white;
     font-family: 'Open Sans';
@@ -179,7 +180,43 @@
     font-size: 22px;
     margin-right: 20px;
     transition: 0.3s;
+    bottom: 20px;
 }
 
+.change-button{
+    padding: 5px 15px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    font-size: 18px;
+    border-style: none;
+    display: inline-block;
+    color: white;
+    font-family: Poppins;
+    width: 200px;
+    border-radius: 5px;
+}
 
+.in-progress-button{
+    background-color: #f1c40f;
+}
+
+.stuck-button{
+    background-color: #e84118;
+}
+
+.complete-button{
+    background-color:#2ecc71;
+    
+}
+
+.move-buttons-container{
+    position: absolute;
+    bottom: 70px;
+   
+    width: 200px;
+
+    box-shadow: 0px 0px 5px black;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
 

@@ -11,6 +11,7 @@ const TaskView = (props) => {
     })
 
     const [addStepView, setAddStepView] = useState(0);
+    const [moveToView, setMoveToView] = useState(0);
     const [taskSteps, setTaskSteps] = useState(props.data.subTasks);
 
 
@@ -39,14 +40,28 @@ const TaskView = (props) => {
         <div className="task-comments-section">
 
         </div>
-
-        <button className="move-to-task-button task-view-button">Move To </button>
+        {renderMoveOptions()}
+        <button className="move-to-task-button task-view-button" onClick={moveTask}>Move To </button>
         <button className="delete-task-button task-view-button" onClick={deleteTask}>Delete</button>
 
 
     </animated.div>);
 
 
+
+    function renderMoveOptions() {
+        if (moveToView === 1) {
+            return (<div className="move-buttons-container">
+                <button className="in-progress-button change-button">In Progress</button>
+                <button className="stuck-button change-button">Stuck</button>
+                <button className="complete-button change-button">Complete</button>
+            </div>)
+        }
+    }
+
+    function moveTask() {
+        setMoveToView(1)
+    }
 
 
     function createStep() {
