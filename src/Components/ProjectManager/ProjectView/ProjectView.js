@@ -172,8 +172,6 @@ const ProjectView = (props) => {
             setTaskView(1);
         }, 1)
 
-
-
     }
 
 
