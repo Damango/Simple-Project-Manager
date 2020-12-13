@@ -41,7 +41,7 @@ const TaskView = (props) => {
 
         </div>
         {renderMoveOptions()}
-        <button className="move-to-task-button task-view-button" onClick={moveTask}>Move To </button>
+        <button className="move-to-task-button task-view-button" onClick={changeTaskView}>Move To </button>
         <button className="delete-task-button task-view-button" onClick={deleteTask}>Delete</button>
 
 
@@ -52,15 +52,21 @@ const TaskView = (props) => {
     function renderMoveOptions() {
         if (moveToView === 1) {
             return (<div className="move-buttons-container">
-                <button className="in-progress-button change-button">In Progress</button>
-                <button className="stuck-button change-button">Stuck</button>
-                <button className="complete-button change-button">Complete</button>
+                <button className="in-progress-button change-button" onClick={() => { moveTask('in-progress') }}>In Progress</button>
+                <button className="stuck-button change-button" onClick={() => { moveTask('stuck') }}>Stuck</button>
+                <button className="complete-button change-button" onClick={() => { moveTask('complete') }}>Complete</button>
             </div>)
         }
     }
 
-    function moveTask() {
+    function changeTaskView() {
         setMoveToView(1)
+    }
+
+    function moveTask(taskArea) {
+
+
+
     }
 
 
