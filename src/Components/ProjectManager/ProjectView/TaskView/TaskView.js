@@ -52,9 +52,9 @@ const TaskView = (props) => {
     function renderMoveOptions() {
         if (moveToView === 1) {
             return (<div className="move-buttons-container">
-                <button className="in-progress-button change-button" onClick={() => { moveTask('in-progress') }}>In Progress</button>
-                <button className="stuck-button change-button" onClick={() => { moveTask('stuck') }}>Stuck</button>
-                <button className="complete-button change-button" onClick={() => { moveTask('complete') }}>Complete</button>
+                <button className="in-progress-button change-button" onClick={() => { moveTask('in-progress', props.taskType, props.taskID) }}>In Progress</button>
+                <button className="stuck-button change-button" onClick={() => { moveTask('stuck', props.taskType, props.taskID) }}>Stuck</button>
+                <button className="complete-button change-button" onClick={() => { moveTask('complete', props.taskType, props.taskID) }}>Complete</button>
             </div>)
         }
     }
@@ -63,7 +63,7 @@ const TaskView = (props) => {
         setMoveToView(1)
     }
 
-    function moveTask(taskArea) {
+    function moveTask(taskNewArea, taskOldArea, taskID,) {
 
 
 

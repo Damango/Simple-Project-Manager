@@ -61,6 +61,13 @@ const ProjectView = (props) => {
         {renderTaskView()}
     </div>);
 
+    function moveTask(taskAreaNew, taskAreaOld, taskID) {
+
+
+
+
+    }
+
 
     function openCreateTask() {
         if (createTask === 0) {
@@ -177,7 +184,7 @@ const ProjectView = (props) => {
 
     function renderTaskView() {
         if (taskView === 1) {
-            return (<TaskView projectID={props.projectData.projectID} data={taskData} closeTaskView={closeTaskView} deleteTask={deleteTask} />)
+            return (<TaskView projectID={props.projectData.projectID} data={taskData} closeTaskView={closeTaskView} deleteTask={deleteTask} moveTask={moveTask} />)
         }
         else {
             return ''
