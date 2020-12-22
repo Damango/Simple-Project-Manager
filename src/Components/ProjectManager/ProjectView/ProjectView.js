@@ -6,9 +6,9 @@ import "./ProjectView.css"
 const ProjectView = (props) => {
 
     const [todos, setTodos] = useState(props.projectData.toDoTasks);
-    let [inProgress, setInProgress] = useState(props.projectData.inProgressTasks);
-    let [stuck, setStuck] = useState(props.projectData.stuckTasks);
-    let [completed, setCompleted] = useState(props.projectData.completedTasks);
+    const [inProgress, setInProgress] = useState(props.projectData.inProgressTasks);
+    const [stuck, setStuck] = useState(props.projectData.stuckTasks);
+    const [completed, setCompleted] = useState(props.projectData.completedTasks);
 
     let [changeNumber, setChangeNumber] = useState(0)
 
@@ -63,9 +63,86 @@ const ProjectView = (props) => {
 
     function moveTask(taskAreaNew, taskAreaOld, taskID) {
 
+        if (taskAreaNew === 'in-progress') {
 
 
 
+            if (taskAreaOld === 'todo') {
+                let data = todos;
+
+                let i;
+                for (i = 0; i < data.length; i++) {
+                    if (data[i].taskID === taskID) {
+
+                        inProgress.push(data[i]);
+                        console.log(inProgress[-1]);
+                        data.splice(i, 1);
+
+
+
+                    }
+                }
+
+            }
+
+            if (taskAreaOld === 'stuck') {
+                let data = stuck;
+
+                let i;
+                for (i = 0; i < data.length; i++) {
+                    if (data[i].taskID === taskID) {
+
+                        inProgress.push(data[i]);
+                        data.splice(i, 1);
+
+
+
+                    }
+                }
+
+            }
+        }
+
+        if (taskAreaNew === 'stuck') {
+
+
+
+            if (taskAreaOld === 'todo') {
+                let data = todos;
+
+                let i;
+                for (i = 0; i < data.length; i++) {
+                    if (data[i].taskID === taskID) {
+
+                        stuck.push(data[i]);
+                        data.splice(i, 1);
+
+
+
+                    }
+                }
+
+            }
+
+            if (taskAreaOld === 'in-progress') {
+                let data = inProgress;
+
+                let i;
+                for (i = 0; i < data.length; i++) {
+                    if (data[i].taskID === taskID) {
+
+                        stuck.push(data[i]);
+                        data.splice(i, 1);
+
+
+
+                    }
+                }
+
+            }
+        }
+
+        setChangeNumber(changeNumber + 1)
     }
 
 
