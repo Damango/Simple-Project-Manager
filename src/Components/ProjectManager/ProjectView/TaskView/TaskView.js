@@ -4,9 +4,15 @@ import "./TaskView.css"
 import SubTasks from "./SubTasks/SubTasks"
 const TaskView = (props) => {
 
+    let taskViewHeight = 800;
+
+    if (window.innerHeight < 800) {
+        taskViewHeight = 500;
+    }
+
     let taskViewStyle = useSpring({
         from: { height: 0 }, to: {
-            height: 800
+            height: taskViewHeight
         }
     })
 
@@ -22,7 +28,7 @@ const TaskView = (props) => {
 
 
 
-
+        <div>{props.data.taskType}</div>
 
         <div className="task-view-title">{props.data.taskText}</div>
         <div className="task-view-description">{props.data.taskDescription}</div>
