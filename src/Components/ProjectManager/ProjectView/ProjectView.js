@@ -79,19 +79,19 @@ const ProjectView = (props) => {
                 for (i = 0; i < data.length; i++) {
                     if (data[i].taskID === taskID) {
 
-                        let theLength = todos.length - 1;
 
 
-                        inProgress.push(data[i]);
+                        let newInProgress = data[i]
+                        newInProgress.taskType = 'in-progress'
+                        inProgress.push(newInProgress);
                         //setInProgress(inProgress)
-                        alert(inProgress[theLength])
-                        inProgress[theLength].taskType = 'in-progress'
-                        //alert(storageData)
+
                         storageData[props.projectData.projectID].inProgressTasks = inProgress;
 
 
 
                         data.splice(i, 1);
+                        setTodos(data)
 
                         storageData[props.projectData.projectID].toDoTasks = data;
                         localStorage.setItem('project-manager-simple', JSON.stringify(storageData))
@@ -103,18 +103,26 @@ const ProjectView = (props) => {
 
             if (taskAreaOld === 'stuck') {
                 let data = stuck;
+                let storageData = JSON.parse(localStorage.getItem('project-manager-simple'));
 
                 let i;
                 for (i = 0; i < data.length; i++) {
                     if (data[i].taskID === taskID) {
 
-                        let theLength = todos.length - 1;
 
-                        inProgress.push(data[i]);
+                        let newInProgress = data[i]
+                        newInProgress.taskType = 'in-progress'
+                        inProgress.push(newInProgress);
 
-                        setInProgress(inProgress)
-                        inProgress[theLength].taskType = 'in-progress'
+
+                        storageData[props.projectData.projectID].inProgressTasks = inProgress;
+
+
                         data.splice(i, 1);
+                        setStuck(data)
+
+                        storageData[props.projectData.projectID].stuckTasks = data;
+                        localStorage.setItem('project-manager-simple', JSON.stringify(storageData))
 
 
 
@@ -129,41 +137,175 @@ const ProjectView = (props) => {
 
 
             if (taskAreaOld === 'todo') {
+                let fullStorageData = JSON.parse(localStorage.getItem('project-manager-simple'))
+                let storageData = JSON.parse(localStorage.getItem('project-manager-simple'));
+
+
+
                 let data = todos;
 
                 let i;
                 for (i = 0; i < data.length; i++) {
                     if (data[i].taskID === taskID) {
 
-                        let theLength = stuck.length;
 
-                        stuck.push(data[i]);
+
+                        let newStuck = data[i]
+                        newStuck.taskType = 'stuck'
+                        stuck.push(newStuck);
+                        //setInProgress(inProgress)
+
+                        storageData[props.projectData.projectID].stuckTasks = stuck;
+
+
 
                         data.splice(i, 1);
+                        setTodos(data)
 
-
+                        storageData[props.projectData.projectID].toDoTasks = data;
+                        localStorage.setItem('project-manager-simple', JSON.stringify(storageData))
 
                     }
                 }
-
             }
 
             if (taskAreaOld === 'in-progress') {
+                let fullStorageData = JSON.parse(localStorage.getItem('project-manager-simple'))
+                let storageData = JSON.parse(localStorage.getItem('project-manager-simple'));
+
+
+
                 let data = inProgress;
 
                 let i;
                 for (i = 0; i < data.length; i++) {
                     if (data[i].taskID === taskID) {
 
-                        stuck.push(data[i]);
+
+
+                        let newStuck = data[i]
+                        newStuck.taskType = 'stuck'
+                        stuck.push(newStuck);
+                        //setInProgress(inProgress)
+
+                        storageData[props.projectData.projectID].stuckTasks = stuck;
+
+
+
                         data.splice(i, 1);
+                        setInProgress(data)
 
-
+                        storageData[props.projectData.projectID].inProgressTasks = data;
+                        localStorage.setItem('project-manager-simple', JSON.stringify(storageData))
 
                     }
                 }
-
             }
+        }
+
+        if (taskAreaNew === 'completed') {
+
+            if (taskAreaOld === 'todo') {
+                let fullStorageData = JSON.parse(localStorage.getItem('project-manager-simple'))
+                let storageData = JSON.parse(localStorage.getItem('project-manager-simple'));
+
+
+
+                let data = todos;
+
+                let i;
+                for (i = 0; i < data.length; i++) {
+                    if (data[i].taskID === taskID) {
+
+
+
+                        let newCompleted = data[i]
+                        newCompleted.taskType = 'completed'
+                        completed.push(newCompleted);
+                        //setInProgress(inProgress)
+
+                        storageData[props.projectData.projectID].completedTasks = completed;
+
+
+
+                        data.splice(i, 1);
+                        setTodos(data)
+
+                        storageData[props.projectData.projectID].toDoTasks = data;
+                        localStorage.setItem('project-manager-simple', JSON.stringify(storageData))
+
+                    }
+                }
+            }
+
+            if (taskAreaOld === 'in-progress') {
+                let fullStorageData = JSON.parse(localStorage.getItem('project-manager-simple'))
+                let storageData = JSON.parse(localStorage.getItem('project-manager-simple'));
+
+
+
+                let data = inProgress;
+
+                let i;
+                for (i = 0; i < data.length; i++) {
+                    if (data[i].taskID === taskID) {
+
+
+
+                        let newCompleted = data[i]
+                        newCompleted.taskType = 'completed'
+                        completed.push(newCompleted);
+                        //setInProgress(inProgress)
+
+                        storageData[props.projectData.projectID].completedTasks = completed;
+
+
+
+                        data.splice(i, 1);
+                        setInProgress(data)
+
+                        storageData[props.projectData.projectID].inProgressTasks = data;
+                        localStorage.setItem('project-manager-simple', JSON.stringify(storageData))
+
+                    }
+                }
+            }
+
+            if (taskAreaOld === 'stuck') {
+                let fullStorageData = JSON.parse(localStorage.getItem('project-manager-simple'))
+                let storageData = JSON.parse(localStorage.getItem('project-manager-simple'));
+
+
+
+                let data = stuck;
+
+                let i;
+                for (i = 0; i < data.length; i++) {
+                    if (data[i].taskID === taskID) {
+
+
+
+                        let newCompleted = data[i]
+                        newCompleted.taskType = 'completed'
+                        completed.push(newCompleted);
+                        //setInProgress(inProgress)
+
+                        storageData[props.projectData.projectID].completedTasks = completed;
+
+
+
+                        data.splice(i, 1);
+                        setStuck(data)
+
+                        storageData[props.projectData.projectID].stuckTasks = data;
+                        localStorage.setItem('project-manager-simple', JSON.stringify(storageData))
+
+                    }
+                }
+            }
+
+
+
         }
 
         setChangeNumber(changeNumber + 1)

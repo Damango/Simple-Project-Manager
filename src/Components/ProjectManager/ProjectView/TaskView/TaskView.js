@@ -60,7 +60,7 @@ const TaskView = (props) => {
             return (<div className="move-buttons-container">
                 <button className="in-progress-button change-button" onClick={() => { moveTask('in-progress', props.data.taskType, props.data.taskID) }}>In Progress</button>
                 <button className="stuck-button change-button" onClick={() => { moveTask('stuck', props.data.taskType, props.data.taskID) }}>Stuck</button>
-                <button className="complete-button change-button" onClick={() => { moveTask('complete', props.data.taskType, props.data.taskID) }}>Complete</button>
+                <button className="complete-button change-button" onClick={() => { moveTask('completed', props.data.taskType, props.data.taskID) }}>Complete</button>
             </div>)
         }
     }

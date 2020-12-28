@@ -37,7 +37,7 @@ const ProjectManager = (props) => {
                             }
                         ],
                         comments: [],
-                        taskID: 0
+                        taskID: Math.floor(Math.random() * 90000)
                     },
                     {
                         taskType: "todo",
@@ -50,7 +50,7 @@ const ProjectManager = (props) => {
                             'Develop UI interface for submitting Tasks'
                         ],
                         comments: [],
-                        taskID: 1
+                        taskID: Math.floor(Math.random() * 90000)
                     },
                     {
                         taskType: "todo",
@@ -63,7 +63,7 @@ const ProjectManager = (props) => {
                             'Develop UI interface for submitting Tasks'
                         ],
                         comments: [],
-                        taskID: 2
+                        taskID: Math.floor(Math.random() * 90000)
                     }
                 ],
                 inProgressTasks: [
@@ -78,7 +78,7 @@ const ProjectManager = (props) => {
                             'Develop UI interface for submitting Tasks'
                         ],
                         comments: [],
-                        taskID: 0
+                        taskID: Math.floor(Math.random() * 90000)
                     }
                 ],
                 stuckTasks: [
@@ -93,7 +93,7 @@ const ProjectManager = (props) => {
                             'Develop UI interface for submitting Tasks'
                         ],
                         comments: [],
-                        taskID: 0
+                        taskID: Math.floor(Math.random() * 90000)
                     }
                 ],
                 completedTasks: [
@@ -108,7 +108,7 @@ const ProjectManager = (props) => {
                             'Develop UI interface for submitting Tasks'
                         ],
                         comments: [],
-                        taskID: 0
+                        taskID: Math.floor(Math.random() * 90000)
                     }
                 ],
                 projectID: 0
