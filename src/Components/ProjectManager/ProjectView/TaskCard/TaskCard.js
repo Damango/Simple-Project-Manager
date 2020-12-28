@@ -25,7 +25,7 @@ const TaskCard = (props) => {
 
     function openTasks() {
 
-        alert(props.taskData.taskType);
+
 
         let taskData = JSON.parse(localStorage.getItem('project-manager-simple'))
         taskData = taskData[props.projectID];

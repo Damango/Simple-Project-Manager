@@ -7,7 +7,9 @@ const ProjectManager = (props) => {
 
 
     const [projectView, setProjectView] = useState(0);
+    const [createProject, setCreateProject] = useState(0)
     const [projectData, setProjectData] = useState();
+    const [projectsDisplay, setProjectsDisplay] = useState(JSON.parse(localStorage.getItem('project-manager-simple')))
 
 
     if (localStorage.getItem('project-manager-simple') === null) {
@@ -188,12 +190,71 @@ const ProjectManager = (props) => {
 
         <div className="project-cards-wrapper">
 
-            {projects.map((projects) => <ProjectCard projectInfo={projects} changeProjectView={changeProjectView} />)}
+            {projectsDisplay.map((projects) => <ProjectCard projectInfo={projects} changeProjectView={changeProjectView} />)}
+            <button className="create-project-button" onClick={changeCreateProject}>Create Project +</button>
             {displayProjectView()}
+            {displayCreateProject()}
 
         </div>
 
     </div>);
+
+
+    function displayCreateProject() {
+        if (createProject === 1) {
+            return (<div className="create-project-modal">
+                <input className="project-name-input" placeholder="Project Name" />
+                <button onClick={submitNewProject}>submit</button>
+            </div>)
+        }
+    }
+
+    function submitNewProject() {
+
+        let storage = JSON.parse(localStorage.getItem('project-manager-simple'));
+        let i = 0;
+        let newProjectName = document.querySelector('.project-name-input').value;
+        while (i < storage.length) {
+
+            i++;
+
+
+        }
+
+
+        storage.push({
+            projectAuthor: "You",
+            projectDate: '01-01-2021',
+            projectDescription: "Temp Description for now",
+            projectID: i,
+            projectText: newProjectName,
+            inProgressTasks: [],
+            toDoTasks: [],
+            stuckTasks: [],
+            completedTasks: []
+        })
+
+        setProjectsDisplay(storage);
+
+        localStorage.setItem('project-manager-simple', JSON.stringify(storage));
+
+
+
+
+
+    }
+
+
+    function changeCreateProject() {
+        if (createProject === 0) {
+            setCreateProject(1)
+        }
+
+        else {
+            setCreateProject(0)
+        }
+
+    }
 
 
     function displayProjectView() {

@@ -37,6 +37,38 @@ const SubTasks = (props) => {
                 }
 
             }
+        }
+
+
+
+
+        for (i = 0; i < oldProjectData[props.projectID].inProgressTasks.length; i++) {
+
+            if (oldProjectData[props.projectID].inProgressTasks[i].taskID === props.taskID) {
+
+
+                oldTaskView = oldProjectData[props.projectID].inProgressTasks[i];
+                for (j = 0; j < oldTaskView.subTasks.length; j++) {
+                    if (oldTaskView.subTasks[j].subTaskID === props.data.subTaskID) {
+                        oldTaskView.subTasks.splice(j, 1);
+                        newTaskView = oldTaskView;
+
+                        oldProjectData[props.projectID].inProgressTasks[i] = newTaskView;
+                        props.removeStep(newTaskView);
+                        localStorage.setItem('project-manager-simple', JSON.stringify(oldProjectData));
+                    }
+                }
+
+
+
+            }
+
+
+
+
+
+
+
 
         }
 
