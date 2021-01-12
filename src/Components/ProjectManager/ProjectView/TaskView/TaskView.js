@@ -38,6 +38,11 @@ const TaskView = (props) => {
                 <div className="sub-task-view-selector">Open</div>
                 <div className="sub-task-view-selector">Archived</div>
             </div>
+            <div className="task-move-buttons">
+                {renderMoveOptions()}
+                <button className="move-to-task-button task-view-button" onClick={changeTaskView}>Move To </button>
+                <button className="delete-task-button task-view-button" onClick={deleteTask}>Delete</button>
+            </div>
             {taskSteps.map((task) => <SubTasks data={task} taskID={props.data.taskID} projectID={props.projectID} removeStep={removeStep} />)}
             <button className="create-sub-task-button" onClick={createStep}>Add Step +</button>
             {renderAddStep()}
@@ -46,9 +51,8 @@ const TaskView = (props) => {
         <div className="task-comments-section">
 
         </div>
-        {renderMoveOptions()}
-        <button className="move-to-task-button task-view-button" onClick={changeTaskView}>Move To </button>
-        <button className="delete-task-button task-view-button" onClick={deleteTask}>Delete</button>
+
+
 
 
     </animated.div>);
@@ -58,7 +62,7 @@ const TaskView = (props) => {
     function renderMoveOptions() {
         if (moveToView === 1) {
             return (<div className="move-buttons-container">
-                <button className="in-progress-button change-button" onClick={() => { moveTask('in-progress', props.data.taskType, props.data.taskID) }}>In Progress</button>
+                <button className="in-progress-button change-button" onClick={() => { moveTask('in-progress', props.data.taskType, props.data.taskID); changeTaskView() }}>In Progress</button>
                 <button className="stuck-button change-button" onClick={() => { moveTask('stuck', props.data.taskType, props.data.taskID) }}>Stuck</button>
                 <button className="complete-button change-button" onClick={() => { moveTask('completed', props.data.taskType, props.data.taskID) }}>Complete</button>
             </div>)
@@ -66,7 +70,14 @@ const TaskView = (props) => {
     }
 
     function changeTaskView() {
-        setMoveToView(1)
+
+        if (moveToView === 1) {
+            setMoveToView(0)
+        }
+        else {
+            setMoveToView(1)
+        }
+
     }
 
     function moveTask(taskNewArea, taskOldArea, taskID) {
