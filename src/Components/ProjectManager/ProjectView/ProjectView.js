@@ -234,10 +234,11 @@ const ProjectView = (props) => {
 
 
         let storage = JSON.parse(localStorage.getItem('project-manager-simple'));
+        let storageData = JSON.parse(localStorage.getItem('project-manager-simple'));
         let i;
         let oldList;
         if (data.taskType === 'todo') {
-            oldList = props.projectData.toDoTasks;
+            oldList = storageData[props.projectData.projectID].toDoTasks;
 
             for (i = 0; i < oldList.length; i++) {
                 if (oldList[i].taskID === data.taskID) {
@@ -254,7 +255,7 @@ const ProjectView = (props) => {
         }
 
         if (data.taskType === 'in-progress') {
-            oldList = props.projectData.inProgressTasks;
+            oldList = storageData[props.projectData.projectID].inProgressTasks;
 
             for (i = 0; i < oldList.length; i++) {
                 if (oldList[i].taskID === data.taskID) {
@@ -263,7 +264,7 @@ const ProjectView = (props) => {
             }
             storage[props.projectData.projectID].inProgressTasks = oldList;
 
-            setTodos(oldList);
+            setInProgress(oldList);
             setChangeNumber(changeNumber + 2);
             setTaskView(0)
 
@@ -271,7 +272,7 @@ const ProjectView = (props) => {
         }
 
         if (data.taskType === 'stuck') {
-            oldList = props.projectData.stuckTasks;
+            oldList = storageData[props.projectData.projectID].stuckTasks;
 
             for (i = 0; i < oldList.length; i++) {
                 if (oldList[i].taskID === data.taskID) {
@@ -280,7 +281,7 @@ const ProjectView = (props) => {
             }
             storage[props.projectData.projectID].stuckTasks = oldList;
 
-            setTodos(oldList);
+            setStuck(oldList);
             setChangeNumber(changeNumber + 2);
             setTaskView(0)
 
@@ -288,7 +289,7 @@ const ProjectView = (props) => {
         }
 
         if (data.taskType === 'completed') {
-            oldList = props.projectData.completedTasks;
+            oldList = storageData[props.projectData.projectID].completedTasks;
 
             for (i = 0; i < oldList.length; i++) {
                 if (oldList[i].taskID === data.taskID) {
@@ -297,7 +298,7 @@ const ProjectView = (props) => {
             }
             storage[props.projectData.projectID].completedTasks = oldList;
 
-            setTodos(oldList);
+            setCompleted(oldList);
             setChangeNumber(changeNumber + 2);
             setTaskView(0)
 
