@@ -18,7 +18,7 @@ const TaskCard = (props) => {
         <div className="task-description">{props.taskData.taskDescription}</div>
         <div className="task-labels-container">
             {props.taskData.taskLabels.map((label) => <div className="label">{label}</div>)}
-            <div>{props.taskData.taskType}</div>
+
         </div>
     </animated.div>);
 

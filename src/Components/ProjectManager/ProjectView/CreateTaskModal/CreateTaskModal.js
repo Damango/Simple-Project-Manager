@@ -3,13 +3,6 @@ import { useSpring, animated } from 'react-spring'
 import "./CreateTaskModal.css"
 const CreateTaskModal = (props) => {
 
-    let [selectLabel, setSelectLabel] = useState('');
-
-
-    let [newTask, setNewTask] = useState({})
-
-
-
     return (<div className="create-task-modal-container">
         <div className="create-task-title-container">
             <div className="create-task-title">Task Title</div>
@@ -50,18 +43,10 @@ const CreateTaskModal = (props) => {
             taskType: "todo",
             taskID: Math.floor(Math.random() * 40000)
         }
-
-
         oldTaskList.push(newTask);
         newTaskList = oldTaskList;
-
-
-
         oldProjectData[props.projectID].toDoTasks = newTaskList;
         newProjectData = oldProjectData;
-
-        console.log(newProjectData);
-
         localStorage.setItem('project-manager-simple', JSON.stringify(newProjectData));
         props.addNewTask(newTaskList);
 

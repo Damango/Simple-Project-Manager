@@ -24,12 +24,6 @@ const TaskView = (props) => {
 
     return (<animated.div style={taskViewStyle} className="task-view-container">
         <div className="close-task" onClick={closeTask}>X</div>
-
-
-
-
-        <div>{props.data.taskType}</div>
-
         <div className="task-view-title">{props.data.taskText}</div>
         <div className="task-view-description">{props.data.taskDescription}</div>
         <div className="task-sub-task-container">
@@ -43,7 +37,7 @@ const TaskView = (props) => {
                 <button className="move-to-task-button task-view-button" onClick={changeTaskView}>Move To </button>
                 <button className="delete-task-button task-view-button" onClick={deleteTask}>Delete</button>
             </div>
-            {taskSteps.map((task) => <SubTasks data={task} taskID={props.data.taskID} projectID={props.projectID} removeStep={removeStep} />)}
+            {taskSteps.map((task) => <SubTasks data={task} taskID={props.data.taskID} projectID={props.projectID} removeStep={removeStep} key={Math.random() * 1000} />)}
             <button className="create-sub-task-button" onClick={createStep}>Add Step +</button>
             {renderAddStep()}
 
@@ -126,6 +120,7 @@ const TaskView = (props) => {
                     largeOldData[props.projectID].toDoTasks[i] = newTaskView;
                     localStorage.setItem('project-manager-simple', JSON.stringify(largeOldData));
                     setTaskSteps(newTaskView.subTasks);
+
                 }
             }
         }

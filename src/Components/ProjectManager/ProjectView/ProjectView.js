@@ -19,8 +19,8 @@ const ProjectView = (props) => {
 
 
 
-
     return (<div className="project-view-container" >
+
         <div className="close-project-view-button" onClick={closeProjectView}>X</div>
         <div className="project-view-wrapper">
 
@@ -30,7 +30,7 @@ const ProjectView = (props) => {
                     <div className="task-container-header">To Do</div>
                     <div className="task-todos tasks-container">
 
-                        {todos.map((todo) => <TaskCard taskData={todo} changeTaskView={changeTaskView} projectID={props.projectData.projectID} />)}
+                        {todos.map((todo) => <TaskCard taskData={todo} changeTaskView={changeTaskView} projectID={props.projectData.projectID} key={todo.taskID} />)}
                         <button className="create-task-button" onClick={openCreateTask}>Create Task +</button>
                     </div>
                 </div>
@@ -38,21 +38,21 @@ const ProjectView = (props) => {
                     <div className="task-container-header">In Progress</div>
                     <div className="task-in-progress tasks-container">
 
-                        {inProgress.map((inProgress) => <TaskCard taskData={inProgress} changeTaskView={changeTaskView} projectID={props.projectData.projectID} />)}
+                        {inProgress.map((inProgress) => <TaskCard taskData={inProgress} changeTaskView={changeTaskView} projectID={props.projectData.projectID} key={inProgress.taskID} />)}
                     </div>
                 </div>
                 <div className="tasks-wrapper">
                     <div className="task-container-header">Stuck</div>
                     <div className="task-stuck tasks-container">
 
-                        {stuck.map((inProgress) => <TaskCard taskData={inProgress} changeTaskView={changeTaskView} projectID={props.projectData.projectID} />)}
+                        {stuck.map((inProgress) => <TaskCard taskData={inProgress} changeTaskView={changeTaskView} projectID={props.projectData.projectID} key={inProgress.taskID} />)}
                     </div>
                 </div>
                 <div className="tasks-wrapper">
                     <div className="task-container-header">Complete</div>
                     <div className="task-complete tasks-container">
 
-                        {completed.map((inProgress) => <TaskCard taskData={inProgress} changeTaskView={changeTaskView} projectID={props.projectData.projectID} />)}
+                        {completed.map((inProgress) => <TaskCard taskData={inProgress} changeTaskView={changeTaskView} projectID={props.projectData.projectID} key={inProgress.taskID} />)}
                     </div>
                 </div>
             </div>
@@ -64,37 +64,26 @@ const ProjectView = (props) => {
     function moveTask(taskAreaNew, taskAreaOld, taskID) {
 
         if (taskAreaNew === 'in-progress') {
-
-
-
             if (taskAreaOld === 'todo') {
                 let fullStorageData = JSON.parse(localStorage.getItem('project-manager-simple'))
                 let storageData = JSON.parse(localStorage.getItem('project-manager-simple'));
 
-
-
-                let data = todos;
-
+                //let data = todos;
+                let data = storageData[props.projectData.projectID].toDoTasks
                 let i;
                 for (i = 0; i < data.length; i++) {
                     if (data[i].taskID === taskID) {
 
-
-
                         let newInProgress = data[i]
+                        console.log(data[i])
+
                         newInProgress.taskType = 'in-progress'
                         inProgress.push(newInProgress);
-                        //setInProgress(inProgress)
-
                         storageData[props.projectData.projectID].inProgressTasks = inProgress;
-
-
-
                         data.splice(i, 1);
-                        setTodos(data)
-
                         storageData[props.projectData.projectID].toDoTasks = data;
                         localStorage.setItem('project-manager-simple', JSON.stringify(storageData))
+                        setTodos(data)
 
                     }
                 }
@@ -102,66 +91,41 @@ const ProjectView = (props) => {
             }
 
             if (taskAreaOld === 'stuck') {
-                let data = stuck;
+                //let data = stuck;
                 let storageData = JSON.parse(localStorage.getItem('project-manager-simple'));
+                let data = storageData[props.projectData.projectID].stuckTasks
 
                 let i;
                 for (i = 0; i < data.length; i++) {
                     if (data[i].taskID === taskID) {
-
-
                         let newInProgress = data[i]
                         newInProgress.taskType = 'in-progress'
                         inProgress.push(newInProgress);
-
-
                         storageData[props.projectData.projectID].inProgressTasks = inProgress;
-
-
                         data.splice(i, 1);
                         setStuck(data)
-
                         storageData[props.projectData.projectID].stuckTasks = data;
                         localStorage.setItem('project-manager-simple', JSON.stringify(storageData))
-
-
-
                     }
                 }
-
             }
         }
 
         if (taskAreaNew === 'stuck') {
-
-
-
             if (taskAreaOld === 'todo') {
                 let fullStorageData = JSON.parse(localStorage.getItem('project-manager-simple'))
                 let storageData = JSON.parse(localStorage.getItem('project-manager-simple'));
-
-
-
-                let data = todos;
-
+                //let data = todos;
+                let data = storageData[props.projectData.projectID].toDoTasks;
                 let i;
                 for (i = 0; i < data.length; i++) {
                     if (data[i].taskID === taskID) {
-
-
-
                         let newStuck = data[i]
                         newStuck.taskType = 'stuck'
                         stuck.push(newStuck);
-                        //setInProgress(inProgress)
-
                         storageData[props.projectData.projectID].stuckTasks = stuck;
-
-
-
                         data.splice(i, 1);
                         setTodos(data)
-
                         storageData[props.projectData.projectID].toDoTasks = data;
                         localStorage.setItem('project-manager-simple', JSON.stringify(storageData))
 
@@ -170,147 +134,89 @@ const ProjectView = (props) => {
             }
 
             if (taskAreaOld === 'in-progress') {
-                let fullStorageData = JSON.parse(localStorage.getItem('project-manager-simple'))
                 let storageData = JSON.parse(localStorage.getItem('project-manager-simple'));
-
-
-
-                let data = inProgress;
-
+                // let data = inProgress;
+                let data = storageData[props.projectData.projectID].inProgressTasks
                 let i;
                 for (i = 0; i < data.length; i++) {
                     if (data[i].taskID === taskID) {
-
-
-
                         let newStuck = data[i]
                         newStuck.taskType = 'stuck'
                         stuck.push(newStuck);
-                        //setInProgress(inProgress)
-
                         storageData[props.projectData.projectID].stuckTasks = stuck;
-
-
-
                         data.splice(i, 1);
                         setInProgress(data)
-
                         storageData[props.projectData.projectID].inProgressTasks = data;
                         localStorage.setItem('project-manager-simple', JSON.stringify(storageData))
-
                     }
                 }
             }
         }
 
         if (taskAreaNew === 'completed') {
-
             if (taskAreaOld === 'todo') {
-                let fullStorageData = JSON.parse(localStorage.getItem('project-manager-simple'))
+
                 let storageData = JSON.parse(localStorage.getItem('project-manager-simple'));
+                // let data = todos;
 
-
-
-                let data = todos;
-
+                let data = storageData[props.projectData.projectID].toDoTasks
                 let i;
                 for (i = 0; i < data.length; i++) {
                     if (data[i].taskID === taskID) {
-
-
-
                         let newCompleted = data[i]
                         newCompleted.taskType = 'completed'
                         completed.push(newCompleted);
-                        //setInProgress(inProgress)
-
                         storageData[props.projectData.projectID].completedTasks = completed;
-
-
-
                         data.splice(i, 1);
                         setTodos(data)
-
                         storageData[props.projectData.projectID].toDoTasks = data;
                         localStorage.setItem('project-manager-simple', JSON.stringify(storageData))
-
                     }
                 }
             }
 
             if (taskAreaOld === 'in-progress') {
-                let fullStorageData = JSON.parse(localStorage.getItem('project-manager-simple'))
                 let storageData = JSON.parse(localStorage.getItem('project-manager-simple'));
-
-
-
-                let data = inProgress;
-
+                //let data = inProgress;
+                let data = storageData[props.projectData.projectID].inProgressTasks
                 let i;
                 for (i = 0; i < data.length; i++) {
                     if (data[i].taskID === taskID) {
-
-
-
                         let newCompleted = data[i]
                         newCompleted.taskType = 'completed'
                         completed.push(newCompleted);
-                        //setInProgress(inProgress)
-
                         storageData[props.projectData.projectID].completedTasks = completed;
-
-
-
                         data.splice(i, 1);
                         setInProgress(data)
-
                         storageData[props.projectData.projectID].inProgressTasks = data;
                         localStorage.setItem('project-manager-simple', JSON.stringify(storageData))
-
                     }
                 }
             }
 
             if (taskAreaOld === 'stuck') {
-                let fullStorageData = JSON.parse(localStorage.getItem('project-manager-simple'))
                 let storageData = JSON.parse(localStorage.getItem('project-manager-simple'));
-
-
-
-                let data = stuck;
-
+                //let data = stuck;
+                let data = storageData[props.projectData.projectID].stuckTasks
                 let i;
                 for (i = 0; i < data.length; i++) {
                     if (data[i].taskID === taskID) {
-
-
-
                         let newCompleted = data[i]
                         newCompleted.taskType = 'completed'
                         completed.push(newCompleted);
-                        //setInProgress(inProgress)
-
                         storageData[props.projectData.projectID].completedTasks = completed;
-
-
-
                         data.splice(i, 1);
                         setStuck(data)
-
                         storageData[props.projectData.projectID].stuckTasks = data;
                         localStorage.setItem('project-manager-simple', JSON.stringify(storageData))
 
                     }
                 }
             }
-
-
-
         }
 
         setChangeNumber(changeNumber + 1)
     }
-
 
     function openCreateTask() {
         if (createTask === 0) {
@@ -407,7 +313,7 @@ const ProjectView = (props) => {
 
     function renderCreateTask() {
         if (createTask === 1) {
-            return (<CreateTaskModal projectID={props.projectData.projectID} oldTaskList={props.projectData.toDoTasks} addNewTask={addNewTask} closeModal={closeCreateModal} />)
+            return (<CreateTaskModal projectID={props.projectData.projectID} oldTaskList={props.projectData.toDoTasks} addNewTask={addNewTask} closeModal={closeCreateModal} key={Math.random() * 1000} />)
         }
     }
     function closeProjectView() {

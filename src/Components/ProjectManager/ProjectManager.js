@@ -15,17 +15,17 @@ const ProjectManager = (props) => {
     if (localStorage.getItem('project-manager-simple') === null) {
         localStorage.setItem('project-manager-simple', JSON.stringify([
             {
-                projectText: "Just something really simple",
-                projectDescription: "Something really short just to show the description of a project",
+                projectText: "First Project",
+                projectDescription: "Short Project Description, Anything Can Go Here!",
 
                 projectAuthor: "Justin Kessler",
-                projectDate: "11-30-2020",
+                projectDate: "12-30-2020",
 
                 toDoTasks: [
                     {
                         taskType: "todo",
                         taskText: "UI fixes for Front End",
-                        taskDescription: "A reallt short description how you might go about fixing the UI bugs",
+                        taskDescription: "A really short description how you might go about fixing the UI bugs",
                         taskLabels: ["Development", "Design"],
 
                         subTasks: [
@@ -48,8 +48,14 @@ const ProjectManager = (props) => {
                         taskLabels: ["Development"],
 
                         subTasks: [
-                            'Creating ML Models',
-                            'Develop UI interface for submitting Tasks'
+                            {
+                                subTaskText: "Creating ML Models",
+                                subTaskID: Math.floor(Math.random() * 10000)
+                            },
+                            {
+                                subTaskText: "Develop UI interface for submitting Tasks",
+                                subTaskID: Math.floor(Math.random() * 10000)
+                            }
                         ],
                         comments: [],
                         taskID: Math.floor(Math.random() * 90000)
@@ -61,8 +67,14 @@ const ProjectManager = (props) => {
                         taskLabels: ["Development", "Design"],
 
                         subTasks: [
-                            'Make UI mockup for tasks',
-                            'Develop UI interface for submitting Tasks'
+                            {
+                                subTaskText: "Creating ML Models",
+                                subTaskID: Math.floor(Math.random() * 10000)
+                            },
+                            {
+                                subTaskText: "Develop UI interface for submitting Tasks",
+                                subTaskID: Math.floor(Math.random() * 10000)
+                            }
                         ],
                         comments: [],
                         taskID: Math.floor(Math.random() * 90000)
@@ -74,10 +86,15 @@ const ProjectManager = (props) => {
                         taskText: "Making money to Leave Ups",
                         taskDescription: "Just leave UPS its so SIMPLE",
                         taskLabels: ["Life"],
-
                         subTasks: [
-                            'Make UI mockup for tasks',
-                            'Develop UI interface for submitting Tasks'
+                            {
+                                subTaskText: "Creating ML Models",
+                                subTaskID: Math.floor(Math.random() * 10000)
+                            },
+                            {
+                                subTaskText: "Develop UI interface for submitting Tasks",
+                                subTaskID: Math.floor(Math.random() * 10000)
+                            }
                         ],
                         comments: [],
                         taskID: Math.floor(Math.random() * 90000)
@@ -91,8 +108,14 @@ const ProjectManager = (props) => {
                         taskLabels: ["Life"],
 
                         subTasks: [
-                            'Make UI mockup for tasks',
-                            'Develop UI interface for submitting Tasks'
+                            {
+                                subTaskText: "Creating ML Models",
+                                subTaskID: Math.floor(Math.random() * 10000)
+                            },
+                            {
+                                subTaskText: "Develop UI interface for submitting Tasks",
+                                subTaskID: Math.floor(Math.random() * 10000)
+                            }
                         ],
                         comments: [],
                         taskID: Math.floor(Math.random() * 90000)
@@ -106,8 +129,14 @@ const ProjectManager = (props) => {
                         taskLabels: ["Life"],
 
                         subTasks: [
-                            'Make UI mockup for tasks',
-                            'Develop UI interface for submitting Tasks'
+                            {
+                                subTaskText: "Creating ML Models",
+                                subTaskID: Math.floor(Math.random() * 10000)
+                            },
+                            {
+                                subTaskText: "Develop UI interface for submitting Tasks",
+                                subTaskID: Math.floor(Math.random() * 10000)
+                            }
                         ],
                         comments: [],
                         taskID: Math.floor(Math.random() * 90000)
@@ -128,8 +157,14 @@ const ProjectManager = (props) => {
                         taskLabels: ["Development", "Design"],
 
                         subTasks: [
-                            'Make UI mockup for tasks',
-                            'Develop UI interface for submitting Tasks'
+                            {
+                                subTaskText: "Creating ML Models",
+                                subTaskID: Math.floor(Math.random() * 10000)
+                            },
+                            {
+                                subTaskText: "Develop UI interface for submitting Tasks",
+                                subTaskID: Math.floor(Math.random() * 10000)
+                            }
                         ],
                         comments: []
                     }
@@ -141,8 +176,14 @@ const ProjectManager = (props) => {
                         taskLabels: ["Life"],
 
                         subTasks: [
-                            'Make UI mockup for tasks',
-                            'Develop UI interface for submitting Tasks'
+                            {
+                                subTaskText: "Creating ML Models",
+                                subTaskID: Math.floor(Math.random() * 10000)
+                            },
+                            {
+                                subTaskText: "Develop UI interface for submitting Tasks",
+                                subTaskID: Math.floor(Math.random() * 10000)
+                            }
                         ],
                         comments: []
                     }
@@ -154,8 +195,14 @@ const ProjectManager = (props) => {
                         taskLabels: ["Life"],
 
                         subTasks: [
-                            'Make UI mockup for tasks',
-                            'Develop UI interface for submitting Tasks'
+                            {
+                                subTaskText: "Creating ML Models",
+                                subTaskID: Math.floor(Math.random() * 10000)
+                            },
+                            {
+                                subTaskText: "Develop UI interface for submitting Tasks",
+                                subTaskID: Math.floor(Math.random() * 10000)
+                            }
                         ],
                         comments: []
                     }
@@ -167,8 +214,14 @@ const ProjectManager = (props) => {
                         taskLabels: ["Life"],
 
                         subTasks: [
-                            'Make UI mockup for tasks',
-                            'Develop UI interface for submitting Tasks'
+                            {
+                                subTaskText: "Creating ML Models",
+                                subTaskID: Math.floor(Math.random() * 10000)
+                            },
+                            {
+                                subTaskText: "Develop UI interface for submitting Tasks",
+                                subTaskID: Math.floor(Math.random() * 10000)
+                            }
                         ],
                         comments: []
                     }
@@ -190,7 +243,7 @@ const ProjectManager = (props) => {
 
         <div className="project-cards-wrapper">
 
-            {projectsDisplay.map((projects) => <ProjectCard projectInfo={projects} changeProjectView={changeProjectView} />)}
+            {projectsDisplay.map((projects) => <ProjectCard projectInfo={projects} changeProjectView={changeProjectView} key={Math.random() * 1000} />)}
             <button className="create-project-button" onClick={changeCreateProject}>Create Project +</button>
             {displayProjectView()}
             {displayCreateProject()}
@@ -215,10 +268,7 @@ const ProjectManager = (props) => {
         let i = 0;
         let newProjectName = document.querySelector('.project-name-input').value;
         while (i < storage.length) {
-
             i++;
-
-
         }
 
 
@@ -237,11 +287,6 @@ const ProjectManager = (props) => {
         setProjectsDisplay(storage);
 
         localStorage.setItem('project-manager-simple', JSON.stringify(storage));
-
-
-
-
-
     }
 
 
@@ -263,7 +308,7 @@ const ProjectManager = (props) => {
 
 
 
-            return (<ProjectView projectData={projectData} closeProjectView={changeProjectView} />)
+            return (<ProjectView projectData={projectData} closeProjectView={changeProjectView} key={Math.random() * 1000} />)
         }
         else {
             return ''
@@ -272,7 +317,7 @@ const ProjectManager = (props) => {
 
 
     function changeProjectView(data) {
-        console.log(data);
+
         setProjectData(data);
         if (projectView === 1) {
             setProjectView(0);
