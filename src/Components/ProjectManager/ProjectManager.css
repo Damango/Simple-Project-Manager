@@ -26,12 +26,30 @@
 .side-bar-task-header{
     font-size: 20px;
     font-weight: bold;
+    font-family: "Roboto";
+}
+
+.side-bar-sub-heading-container{
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 
 
 
 .side-bar-sub-heading{
     margin-left: 10px;
+    margin-top: 8px;
+    margin-bottom: 8px;
+    font-size: 20px;
+}
+
+.side-bar-sub-heading:hover{
+    cursor: pointer;
+}
+
+.project-sub-heading-container{
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 
 .main-view-container{

@@ -1,0 +1,33 @@
+.project-sub-heading{
+    margin-left: 10px;
+    margin-top: 8px;
+    margin-bottom: 8px;
+    font-size: 20px;
+    transition: 0.3s;
+}
+
+.project-sub-heading:hover{
+    cursor: pointer;
+    color: #1828ff;
+}
+
+.project-sub-heading:hover .project-sub-heading-count{
+    cursor: pointer;
+    background-color: #1828ff;
+}
+
+.project-sub-heading-text{
+    display: inline-block;
+}
+
+.project-sub-heading-count{
+    display: inline-block;
+    margin-left: 20px;
+    padding: 5px 15px;
+    background-color:#3498db;
+    color: white;
+    font-size: 15px;
+    border-radius: 20px;
+    transition: 0.3s;
+    font-weight: bold;
+}
