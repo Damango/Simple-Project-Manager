@@ -13,7 +13,7 @@
 
 .project-sub-heading:hover .project-sub-heading-count{
     cursor: pointer;
-    background-color: #1828ff;
+    background-color:rgb(75, 123, 236) ;
 }
 
 .project-sub-heading-text{
@@ -24,7 +24,7 @@
     display: inline-block;
     margin-left: 20px;
     padding: 5px 15px;
-    background-color:#3498db;
+    background-color:rgb(27, 156, 252);
     color: white;
     font-size: 15px;
     border-radius: 20px;

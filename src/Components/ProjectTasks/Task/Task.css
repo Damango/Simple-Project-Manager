@@ -1,1 +1,54 @@
-.task-container{}
+.task-container{
+    position: relative;
+    background-color: white;
+    padding: 15px;
+    min-height: 135px;
+    margin-bottom: 30px;
+    box-shadow: 0px 0px 8px 1px rgba(0,0,0,0.4);
+    transition:0.3s;
+    border-radius: 8px;
+}
+
+.task-container:hover{
+    cursor: pointer;
+    box-shadow: 0px 0px 8px 1px black;
+}
+
+.task-title-container{
+    margin-bottom: 10px;
+    font-family:"Open Sans";
+    font-weight: bold;
+    font-size: 23px;
+
+}
+
+
+.task-description-container{
+    font-size: 15px;
+    font-family: "Roboto"
+}
+
+.task-sub-task-count{
+    position: absolute;
+    border-radius: 5px;
+    font-size: 14px;
+    color: white;
+    bottom: 10px;
+    right: 10px;
+    padding: 3px 8px;
+    background-color: rgb(235, 59, 90);
+    display: inline-block;
+}
+
+.task-comments-count{
+    position: absolute;
+    border-radius: 5px;
+    color: white;
+    bottom: 10px;
+    right: 50px;
+    padding: 3px 8px;
+    background-color: rgb(26, 188, 156);
+    display: inline-block;
+}
+
+
