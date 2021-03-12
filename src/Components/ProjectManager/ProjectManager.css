@@ -2,14 +2,18 @@
     
     width: 100vw;
     height: 100vh;
+    overflow-x: hidden;
+    background-color: rgb(240,240,240);
 }
 
 .side-bar-container{
     position: relative;
     width: 13%;
     height: 100vh;
-    border-right: 1px solid black;
+    border-right: 1px solid rgba(0,0,0,0.1);
+
     float: left;
+    background-color: white;
 }
 
 .side-bar{
@@ -58,6 +62,7 @@
     height: 100vh;
    
     float: right;
+    overflow:hidden;
 }
 
 .main-view{
@@ -69,4 +74,56 @@
     width: 90%;
     height: 90%;
     padding: 20px;
+    margin-top: 20px;
 }
+
+.main-view-header{
+    position: absolute;
+    background-color: white;
+    padding: 20px;
+    width: 100%;
+}
+
+.create-task-button{
+    position: absolute;
+    right: 80px;
+    top:50%;
+    transform:translateY(-50%);
+    border-style:none;
+    color:white;
+    background-color: rgb(27, 156, 252);
+    padding: 8px 15px;
+    font-family:Roboto;
+    font-weight:bold;
+    font-size: 17px;
+    border-radius: 5px;
+    outline: none;
+}
+
+
+@media only screen and (max-width: 1500px) {
+  
+.side-bar-container{
+    position: relative;
+    width: 16%;
+    height: 100vh;
+    
+    float: left;
+}
+
+
+
+.main-view-container{
+    position: relative;
+    width: 83.9%;
+    height: 100vh;
+   
+    float: right;
+}
+
+.main-view{
+    width: 95%;
+}
+
+
+  }

@@ -1,0 +1,233 @@
+::-webkit-scrollbar {
+    width: 5px;
+    
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 8px;
+  }
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 8px;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
+
+
+
+
+
+
+.task-view-container{
+    position: absolute;
+    top: 48%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    width: 700px;
+    height: auto;
+    box-shadow: 0px 0px 10px black;
+    padding: 20px;
+    border-radius: 8px;
+    overflow-y: scroll;
+}
+
+
+.task-view-title{
+    font-family: 'Open Sans';
+    font-weight: bold;
+    font-size: 25px;
+    color: #2f3640;
+}
+
+.task-view-description{
+    margin-top: 25px;
+    font-family: "Poppins";
+    font-weight: 500;
+    font-size: 17px;
+    width: 90%;
+}
+
+.task-view-left-side{
+    position: relative;
+    width: 75%;
+  
+
+}
+
+.task-view-right-side{
+    
+}
+
+
+
+
+.close-task{
+    position: absolute;
+    top: 15px;
+    right: 25px;
+    font-weight: bold;
+    font-family: Poppins;
+    font-size: 26px;
+    transition: 0.3s;
+}
+
+
+.close-task:hover{
+    cursor: pointer;
+    color: rgb(238, 39, 25);
+}
+
+
+.task-sub-task-container{
+    position: relative;
+    height: auto;
+    width: 75%;
+    margin-top: 30px;
+
+}
+
+
+.sub-task-title{
+    font-family: 'Fira Sans';
+    font-weight: bold;
+    color: #2f3640;
+    font-size: 22px;
+}
+
+.sub-task-viewer{
+    margin-top: 10px;
+    border: 1px solid red;
+    display: inline-block;
+}
+
+.sub-task-view-selector{
+    display: inline-block;
+    padding: 5px 15px;
+ 
+    font-family: 'Fira Sans';
+    border: 1px solid black;
+    margin-right: 10px;
+
+}
+
+
+.create-sub-task-button{
+    padding: 5px 15px;
+    width: 220px;
+    text-align: center;
+    background-color: #1abc9c;
+    color: white;
+    font-family: 'Open Sans';
+    font-size: 18px;
+    font-weight: bold;
+    border-style: none;
+    border-radius: 5px;
+    margin-top: 10px;
+    outline: none;
+    transition: 0.3s;
+}
+
+.create-sub-task-button:hover{
+    background-color: #0c705c;
+    cursor: pointer;
+}
+
+.add-step-container input{
+    padding: 8px 15px;
+    margin-top: 15px;
+    border-radius: 5px;
+}
+
+.task-comments-section{
+    position: relative;
+    height: 400px;
+    width: 75%;
+    margin-top: 30px;
+}
+
+
+.delete-task-button{
+    background-color: #EA2027;
+    left: 150px;
+ 
+}
+
+
+.delete-task-button:hover{
+    background-color: #af1217;
+    cursor: pointer;
+}
+
+
+.move-to-task-button{
+    background-color: #1abc9c;
+}
+
+.task-move-buttons{
+    display: inline-block;
+    margin-left: 20px;
+}
+
+.task-view-button{
+   
+    border-radius: 5px;
+    color: white;
+    font-family: 'Open Sans';
+    font-weight: bold;
+    border-style: none;
+    padding: 5px 15px;
+    font-size: 22px;
+    margin-right: 20px;
+    transition: 0.3s;
+
+}
+
+.change-button{
+    padding: 5px 15px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    font-size: 18px;
+    border-style: none;
+    display: inline-block;
+    color: white;
+    font-family: Poppins;
+    width: 200px;
+    border-radius: 5px;
+}
+
+.in-progress-button{
+    background-color: #f1c40f;
+}
+
+.stuck-button{
+    background-color: #e84118;
+}
+
+.complete-button{
+    background-color:#2ecc71;
+    
+}
+
+.move-buttons-container{
+    position: absolute;
+ 
+  top: 80px;
+   
+    width: 200px;
+    background-color: white;
+    box-shadow: 0px 0px 5px black;
+    padding: 5px 10px;
+    border-radius: 5px;
+    z-index: 5;
+}
+
+
+

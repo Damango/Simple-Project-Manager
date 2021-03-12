@@ -1,0 +1,61 @@
+.project-card-container{
+    position: relative;
+    top: 0px;
+    background-color: white;
+    height: 200px;
+    width: 300px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+   margin-right: 35px;
+    margin-left: 35px;
+    display: inline-block;
+    padding: 15px;
+    border: 2px solid rgb(149, 149, 149);
+    border-radius: 8px;
+    transition: 0.3s;
+}
+
+.project-card-container:hover{
+    background-color: rgb(221, 221, 221);
+    cursor: pointer;
+    top: -10px;
+}
+
+
+.project-title{
+font-family: Roboto;
+font-weight: bold;
+font-size: 20px;
+}
+
+.project-description{
+    font-family: "Fira Sans";
+    margin-top: 20px;
+}
+
+
+.project-author{
+    position: absolute;
+    bottom: 10px;
+    font-family: "Fira Sans";
+    font-size: 17px;
+    font-weight: 600;
+    color: white;
+    background-color: #e74c3c;
+    padding: 5px 8px;
+    border-radius: 5px;
+}
+
+
+.project-tasks{
+    position: absolute;
+    bottom: 10px;
+    right: 15px;
+    padding: 5px 15px;
+    text-align: center;
+    background-color: #2f3640;
+    font-family: "Poppins";
+    font-size: 17px;
+    color: white;
+    border-radius: 8px;
+}

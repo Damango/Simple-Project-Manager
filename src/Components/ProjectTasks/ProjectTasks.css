@@ -1,8 +1,38 @@
 .project-tasks-container{
+position: relative;
+height: 100%;
+width: 100%;
 
+margin-top: 20px;
+}
+
+
+
+.project-tasks-title{
+    background-color: white;
 }
 
 
 .project-tasks-wrapper{
-    background-color: green;
+    position: relative;
+ 
+   display: flex;
+   justify-content: space-between;
+   height: 100%;
+
+}
+
+.task-types-title{
+    margin-top: -10px;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+.task-column{
+    position: relative;
+    overflow-x:scroll;
+  border-radius: 3px;
+    width: 23%;
+    height: 90%;
+    padding: 5px;
 }
