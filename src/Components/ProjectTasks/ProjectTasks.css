@@ -30,7 +30,7 @@ margin-top: 20px;
 
 .task-column{
     position: relative;
-    
+    overflow-x:scroll;
   border-radius: 3px;
     width: 23%;
     height: 90%;
