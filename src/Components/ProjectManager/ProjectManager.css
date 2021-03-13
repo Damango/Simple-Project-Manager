@@ -62,7 +62,7 @@
     height: 100vh;
    
     float: right;
-    overflow:hidden;
+    
 }
 
 .main-view{
@@ -80,8 +80,14 @@
 .main-view-header{
     position: absolute;
     background-color: white;
-    padding: 20px;
+    font-weight: bold;
+    color: #2f3640;
+    padding: 15px;
+    font-size: 25px;
     width: 100%;
+    left: -20px;
+    z-index: 10;
+    border-left: 1px solid rgba(0, 0, 0, 0.246);
 }
 
 .create-task-button{
@@ -98,6 +104,70 @@
     font-size: 17px;
     border-radius: 5px;
     outline: none;
+}
+
+
+.add-project-button{
+    margin-top: 20px;
+    background-color: #2ecc71;
+    padding: 7px  15px;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    border-radius: 5px;
+    border-style: none;
+    transition: 0.3s;
+}
+
+.add-project-button:hover{
+    background-color:#27ae60 ;
+    cursor: pointer;
+    outline: none;
+}
+
+
+
+.project-settings{
+    position: relative;
+    color: #353b48;
+    margin-left: 10px;
+    font-size: 20px;
+    transition: 0.3s;
+}
+.project-settings:hover{
+    cursor: pointer;
+    color: gray;
+}
+
+.delete-project-button{
+    background-color: red;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    left: 170px;
+    top: 10px;
+    position: relative;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    text-align: center;
+    transition: 0.3s;
+}
+
+.delete-project-button:hover{
+    cursor: pointer;
+    background-color: darkred;
+}
+
+
+.add-project-container{
+    
+}
+
+.project-title-input{
+    width: 125px;
+    padding: 8px 15px;
+    margin-right: 10px;
 }
 
 

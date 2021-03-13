@@ -1,7 +1,7 @@
 .project-sub-heading{
     margin-left: 10px;
-    margin-top: 8px;
-    margin-bottom: 8px;
+    margin-top: 10px;
+    margin-bottom: 15px;
     font-size: 20px;
     transition: 0.3s;
 }
@@ -18,12 +18,17 @@
 
 .project-sub-heading-text{
     display: inline-block;
+
+    width: 150px;
 }
 
 .project-sub-heading-count{
+    position: absolute;
+    right: -5px;
+    margin-top: 2px;
     display: inline-block;
     margin-left: 20px;
-    padding: 5px 15px;
+    padding: 2px 15px;
     background-color:rgb(27, 156, 252);
     color: white;
     font-size: 15px;
