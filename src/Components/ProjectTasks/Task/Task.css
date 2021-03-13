@@ -25,10 +25,13 @@
 }
 
 .task-title-container{
+    position: relative;
     margin-bottom: 10px;
     font-family:"Open Sans";
     font-weight: bold;
-    font-size: 23px;
+    font-size: 21px;
+    width: 89%;
+    
 
 }
 
