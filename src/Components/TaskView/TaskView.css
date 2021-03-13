@@ -4,7 +4,7 @@
     left: 50%;
     transform:translate(-50%,-50%);
     height: 70%;
-    width: 800px;
+ 
     padding: 20px;
     opacity: 0;
     background-color:white;
@@ -19,7 +19,7 @@
     left: 50%;
     transform:translate(-50%,-50%);
     height: 70%;
-    width: 800px;
+    width: 70%;
     padding: 20px;
    opacity: 1;
    background-color: white;
@@ -32,6 +32,7 @@
     font-family: "Roboto";
     font-weight: bold;
     font-size: 25px;
+    display: inline-block;
 }
 
 .task-description{
@@ -62,4 +63,39 @@
         margin-top: 20px;
         
            resize: none;
+       }
+
+       .move-container{
+           position: relative;
+           display: inline-block;
+           
+           width: 100px;
+       }
+
+
+       .move-button{
+           display: inline-block;
+           background-color: red;
+           margin-left: 20px;
+           border-style: none;
+           color: white;
+           padding: 5px 15px;
+           
+       }
+
+
+       .move-options-container{
+           position: absolute;
+           top: 0px;
+            right: -100px;
+            background-color: white;
+            border: 1px solid rgba(0, 0, 0, 0.13);
+            border-bottom: none;
+           
+       }
+
+       .move-option{
+           background-color: white;
+           padding: 8px 15px;
+           border-bottom: 1px solid rgba(0, 0, 0, 0.123)
        }

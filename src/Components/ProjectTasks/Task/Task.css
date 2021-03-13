@@ -35,7 +35,8 @@
 
 .task-description-container{
     font-size: 15px;
-    font-family: "Roboto"
+    font-family: "Roboto";
+    padding-bottom: 20px;
 }
 
 .task-sub-task-count{
@@ -45,8 +46,8 @@
     color: white;
     bottom: 10px;
     right: 10px;
-    padding: 3px 8px;
-    background-color: rgb(235, 59, 90);
+    padding: 4px 12px;
+    background-color: #00a8ff;
     display: inline-block;
 }
 
@@ -56,23 +57,45 @@
     color: white;
     bottom: 10px;
     right: 50px;
-    padding: 3px 8px;
+    padding: 3px 10px;
     background-color: rgb(26, 188, 156);
     display: inline-block;
 }
 
+.fa-comment{
+    margin-right: 5px;
+}
+
 .task-options-container{
     position: absolute;
+    font-size:20px;
     right: 20px;
-    top: 10px;
-    background-color: black;
-    width: 25px;
-    height: 25px;
+    top: 7px;
+    padding: 5px;
     border-radius: 50%;
     transition: 0.3s;
 }
 
 .task-options-container:hover{
-    background-color: red;
+    color: black;
     cursor: pointer;
+}
+
+
+.options-container{
+    position: absolute;
+    top: 40px;
+    right: 0px;
+    height: 100px;
+    width: 200px;
+    background-color: white;
+    border: 1px solid black;
+}
+
+.delete-option{
+    background-color: #e74c3c;
+    text-align: center;
+    color: white;
+    font-weight: bold;
+    padding: 5px;
 }

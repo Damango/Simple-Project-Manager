@@ -16,7 +16,8 @@ const ProjectManager = (props) => {
     const [taskView, setTaskView] = useState(0);
     const [taskData, setTaskData] = useState()
     const [addTaskState, setAddTaskState] = useState(0);
-
+    const [projectMenu, setProjectMenu] = useState(0)
+    const [deleteProject, setDeleteProject] = useState(0)
 
     function renderState() {
         if (viewState === 0) {
@@ -43,7 +44,7 @@ const ProjectManager = (props) => {
         setActiveTitle(data.projectTitle)
         setViewState(1)
 
-
+        console.log(data)
 
     }
 
@@ -84,7 +85,7 @@ const ProjectManager = (props) => {
     function renderTaskView() {
 
         if (taskView === 1) {
-            return (<TaskView data={taskData} closeTask={changeTaskView} type={0} projectID={projectData.projectID} />)
+            return (<TaskView data={taskData} closeTask={changeTaskView} type={0} projectID={projectData.projectID} updateProject={updateProject} setTaskView={setTaskView} />)
         }
         else {
             return ("")
@@ -125,10 +126,133 @@ const ProjectManager = (props) => {
 
             }
 
+
+            else if (place === 'in-progress') {
+
+                let i;
+                for (i = 0; i < project.projectTasks.inProgressTasks.length; i++) {
+                    if (project.projectTasks.inProgressTasks[i].taskID === taskID) {
+                        project.projectTasks.inProgressTasks.splice(i, 1)
+                        storage[projectID] = project
+                        localStorage.setItem('projectmanager', JSON.stringify(storage))
+                        setProjectData(storage[projectID])
+                    }
+                }
+
+            }
+
+            else if (place === 'stuck') {
+
+                let i;
+                for (i = 0; i < project.projectTasks.stuckTasks.length; i++) {
+                    if (project.projectTasks.stuckTasks[i].taskID === taskID) {
+                        project.projectTasks.stuckTasks.splice(i, 1)
+                        storage[projectID] = project
+                        localStorage.setItem('projectmanager', JSON.stringify(storage))
+                        setProjectData(storage[projectID])
+                    }
+                }
+
+            }
+
+
+
+
+
+
+
+
+
+
             setProjects(storage)
         }
-
         setTimeout(() => { setTaskView(0) }, 1)
+    }
+
+    function openProjectDelete() {
+        if (deleteProject === 0) {
+            setDeleteProject(1)
+        }
+        else if (deleteProject === 1) {
+            setDeleteProject(0)
+        }
+
+    }
+
+    function renderProjectDelete() {
+        if (deleteProject === 1) {
+            return (<div className="delete-project-button" onClick={deleteTheProject}>X</div>)
+        }
+        else {
+            return ('')
+        }
+    }
+
+    function deleteTheProject() {
+
+        let storage = JSON.parse(localStorage.getItem('projectmanager'))
+        let i;
+        for (i = 0; i < storage.projects.length; i++) {
+            if (storage.projects[i].projectID === projectData.projectID) {
+                storage.projects.splice(i, 1);
+                localStorage.setItem('projectmanager', JSON.stringify(storage))
+            }
+        }
+
+        setProjects(storage)
+        setDeleteProject(0)
+        setActiveTitle('My Tasks')
+
+        setViewState(0)
+
+    }
+
+
+    function addProjectMenu() {
+
+        if (projectMenu === 0) {
+            setProjectMenu(1)
+        }
+
+        else if (projectMenu === 1) {
+            setProjectMenu(0)
+        }
+
+
+
+    }
+
+
+    function renderAddProject() {
+
+        if (projectMenu === 1) {
+            return (<div className="add-project-container"><input className="project-title-input" placeholder="Project Title" /><button onClick={addProject}><i class="fas fa-sign-in-alt"></i></button></div>)
+        }
+
+    }
+
+
+
+
+
+    function addProject() {
+        let storage = JSON.parse(localStorage.getItem("projectmanager"))
+        let theLength = storage.projects.length;
+        let projectTitle = document.querySelector('.project-title-input').value
+        storage.projects.push({
+            projectID: theLength,
+            projectTitle: projectTitle,
+            projectTasks: {
+                toDoTasks: [],
+                inProgressTasks: [],
+                stuckTasks: [],
+                completeTasks: []
+            }
+        })
+
+        localStorage.setItem('projectmanager', JSON.stringify(storage))
+        setProjects(storage)
+
     }
 
     /* localStorage.setItem('projectmanager', JSON.stringify({
@@ -209,9 +333,9 @@ const ProjectManager = (props) => {
                         <div className="side-bar-task-header">My Tasks</div>
 
                         <div className="side-bar-sub-heading-container">
-                            <div className="side-bar-sub-heading" onClick={() => { setViewState(0) }}>Today</div>
-                            <div className="side-bar-sub-heading" onClick={() => { setViewState(0) }}>Upcoming</div>
-                            <div className="side-bar-sub-heading" onClick={() => { setViewState(0) }}>All</div>
+                            <div className="side-bar-sub-heading" onClick={() => { setViewState(0); setActiveTitle('Today') }}>Today</div>
+                            <div className="side-bar-sub-heading" onClick={() => { setViewState(0); setActiveTitle('Upcoming') }}>Upcoming</div>
+                            <div className="side-bar-sub-heading" onClick={() => { setViewState(0); setActiveTitle('My Tasks') }}>All</div>
                         </div>
                     </div>
 
@@ -226,6 +350,10 @@ const ProjectManager = (props) => {
                                     data={project}
                                     projectID={project.projectID}
                                     count={project.projectTasks.toDoTasks.length + project.projectTasks.inProgressTasks.length + project.projectTasks.stuckTasks.length} />)}
+
+                            {renderAddProject()}
+                            <button className="add-project-button" onClick={addProjectMenu}>Add Project +</button>
+
                         </div>
                     </div>
 
@@ -240,7 +368,7 @@ const ProjectManager = (props) => {
         </div>
 
         <div className="main-view-container">
-            <div className="main-view-header">{activeTitle} <button className="create-task-button" onClick={() => { setAddTaskState(1) }}>Create Task +</button></div>
+            <div className="main-view-header">{activeTitle} <i className="fas fa-cog project-settings" onClick={openProjectDelete}></i>{renderProjectDelete()} <button className="create-task-button" onClick={() => { setAddTaskState(1) }}>Create Task +</button></div>
 
             <div className="main-view">
 
