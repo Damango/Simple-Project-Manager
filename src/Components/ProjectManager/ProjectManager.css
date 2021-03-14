@@ -7,7 +7,7 @@
 }
 
 .side-bar-container{
-    position: relative;
+    position: fixed;
     width: 13%;
     height: 100vh;
     border-right: 1px solid rgba(0,0,0,0.1);

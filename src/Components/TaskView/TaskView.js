@@ -22,14 +22,24 @@ const TaskView = (props) => {
             setSubTasks(props.data.subTasks)
         }
 
-        setTimeout(() => {
-            setTheStyle('task-view-container-open')
-        }, 10)
+        if (props.new === true) {
+            setTimeout(() => {
+                setTheStyle('task-view-container-small')
+            }, 10)
+        }
+
+        else {
+            setTimeout(() => {
+                setTheStyle('task-view-container-open')
+            }, 10)
+        }
+
 
     }, [])
 
 
     function addTask() {
+
         let newTask;
         let i;
         let storage = JSON.parse(localStorage.getItem('projectmanager'))
@@ -51,20 +61,21 @@ const TaskView = (props) => {
         console.log(newTask)
 
 
-        for (i = 0; i < storage.projects.length; i++) {
-            if (props.projectID === storage.projects[i].projectID) {
-                storage.projects[props.projectID].projectTasks.push(newTask)
-                let newProjectData = storage;
-                localStorage.setItem('projectmanager', JSON.stringify(newProjectData))
-                props.updateProject(storage.projects[props.projectID])
 
-            }
-        }
+        storage.projects[props.projectID].projectTasks.push(newTask)
+        let newProjectData = storage;
+        localStorage.setItem('projectmanager', JSON.stringify(newProjectData))
+        props.updateProject(storage.projects[props.projectID])
+
+
+
         console.log(props.projectID)
 
     }
 
     if (props.new === true) {
+
+
         return (<div className={theStyle}>
             <div className="close-task-view" onClick={() => { props.closeTask("close") }}>X</div>
 
@@ -97,7 +108,7 @@ const TaskView = (props) => {
 
                 <div className="sub-task-container-header">Sub Tasks</div>
 
-                {subTasks.map((task) => <SubTask text={task.text} />)}
+                {subTasks.map((task) => <SubTask text={task.text} data={task} projectID={props.projectID} taskID={props.data.taskID} deleteSubTask={deleteSubTask} />)}
                 <div className="sub-task-container-new">{renderAddTaskState()}</div>
 
 
@@ -110,6 +121,26 @@ const TaskView = (props) => {
 
 
         </div>)
+    }
+
+
+    function deleteSubTask(subTaskID) {
+        let i, j;
+        let storage = JSON.parse(localStorage.getItem('projectmanager'));
+        for (i = 0; i < storage.projects[props.projectID].projectTasks.length; i++) {
+            if (storage.projects[props.projectID].projectTasks[i].taskID === props.data.taskID) {
+                for (j = 0; j < storage.projects[props.projectID].projectTasks[i].subTasks.length; j++) {
+                    if (storage.projects[props.projectID].projectTasks[i].subTasks[j].ID === subTaskID) {
+                        storage.projects[props.projectID].projectTasks[i].subTasks.splice(j, 1)
+                        localStorage.setItem('projectmanager', JSON.stringify(storage))
+                        setSubTasks(storage.projects[props.projectID].projectTasks[i].subTasks)
+                    }
+                }
+            }
+        }
+
+        setsubTaskState(0)
+        props.updateProject(storage.projects[props.projectID])
     }
 
 
@@ -144,7 +175,7 @@ const TaskView = (props) => {
         setButtonsContainer('add-task-buttons-container-closed')
         setsubTaskState(0)
 
-
+        props.updateProject(storage.projects[props.projectID])
 
 
 
