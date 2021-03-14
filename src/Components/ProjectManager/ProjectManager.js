@@ -21,7 +21,7 @@ const ProjectManager = (props) => {
 
     function renderState() {
         if (viewState === 0) {
-            return (<MyTasks />)
+            return (<MyTasks tasks={JSON.parse(localStorage.getItem('projectmanager')).myTasks} />)
         }
         else if (viewState === 1) {
 
@@ -118,11 +118,6 @@ const ProjectManager = (props) => {
         }
     }
 
-    function addTaskSwitch() {
-
-        setAddTaskState(1)
-
-    }
 
 
     function renderAddTask() {

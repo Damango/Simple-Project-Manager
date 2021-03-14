@@ -3,13 +3,21 @@ import "./SubTask.css"
 const SubTask = (props) => {
 
 
+
+    function deleteSubTask() {
+
+        props.deleteSubTask(props.data.ID)
+
+    }
+
+
     return (<div className="sub-task-container">
 
-        <button className="check-box">
+        <button className="check-box" onClick={deleteSubTask}>
             <div className="under-box"></div>
         </button>
 
-        <div className="sub-task-text">{props.text}</div>
+        <p className="sub-task-text">{props.text}</p>
 
 
     </div>);
