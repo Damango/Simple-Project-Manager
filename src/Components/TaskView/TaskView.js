@@ -38,40 +38,7 @@ const TaskView = (props) => {
     }, [])
 
 
-    function addTask() {
 
-        let newTask;
-        let i;
-        let storage = JSON.parse(localStorage.getItem('projectmanager'))
-        let title = document.querySelector('.task-title-input').value;
-        let description = document.querySelector('.description-input').value;
-        console.log(title)
-        newTask = {
-            taskTitle: title,
-            taskDescription: description,
-            taskLabels: [
-                "Development"
-            ],
-            subTasks: [],
-            taskComments: [],
-            taskType: "todo",
-            taskID: Math.floor(Math.random() * 10000)
-        }
-
-        console.log(newTask)
-
-
-
-        storage.projects[props.projectID].projectTasks.push(newTask)
-        let newProjectData = storage;
-        localStorage.setItem('projectmanager', JSON.stringify(newProjectData))
-        props.updateProject(storage.projects[props.projectID])
-
-
-
-        console.log(props.projectID)
-
-    }
 
     if (props.new === true) {
 
@@ -82,7 +49,7 @@ const TaskView = (props) => {
             <div id="thetest" className="task-title-input-container"><input className="task-title-input" placeholder="Enter Title" /></div>
             <div className="task-description-input-container"><textarea className="description-input" placeholder="Enter Description" /></div>
 
-            <button className="submit-task-button" onClick={addTask}>Submit +</button>
+            <button className="submit-task-button" >Submit +</button>
         </div>)
     }
 
@@ -127,20 +94,43 @@ const TaskView = (props) => {
     function deleteSubTask(subTaskID) {
         let i, j;
         let storage = JSON.parse(localStorage.getItem('projectmanager'));
-        for (i = 0; i < storage.projects[props.projectID].projectTasks.length; i++) {
-            if (storage.projects[props.projectID].projectTasks[i].taskID === props.data.taskID) {
-                for (j = 0; j < storage.projects[props.projectID].projectTasks[i].subTasks.length; j++) {
-                    if (storage.projects[props.projectID].projectTasks[i].subTasks[j].ID === subTaskID) {
-                        storage.projects[props.projectID].projectTasks[i].subTasks.splice(j, 1)
-                        localStorage.setItem('projectmanager', JSON.stringify(storage))
-                        setSubTasks(storage.projects[props.projectID].projectTasks[i].subTasks)
+        let project;
+
+        let projectPlace;
+
+
+        for (i = 0; i < storage.projects.length; i++) {
+
+
+            if (storage.projects[i].projectID === props.projectID) {
+                project = storage.projects[i];
+                projectPlace = i;
+                for (i = 0; i < storage.projects[projectPlace].projectTasks.length; i++) {
+                    if (storage.projects[projectPlace].projectTasks[i].taskID === props.data.taskID) {
+                        for (j = 0; j < storage.projects[projectPlace].projectTasks[i].subTasks.length; j++) {
+                            if (storage.projects[projectPlace].projectTasks[i].subTasks[j].ID === subTaskID) {
+                                storage.projects[projectPlace].projectTasks[i].subTasks.splice(j, 1)
+
+
+
+                                setSubTasks(storage.projects[projectPlace].projectTasks[i].subTasks)
+
+                            }
+                        }
                     }
                 }
             }
         }
 
+
+
+
+
+        localStorage.setItem('projectmanager', JSON.stringify(storage))
+
         setsubTaskState(0)
-        props.updateProject(storage.projects[props.projectID])
+
+        props.updateProject(storage.projects[projectPlace])
     }
 
 
@@ -149,8 +139,18 @@ const TaskView = (props) => {
 
         let oldTasks = subTasks;
         let storage = JSON.parse(localStorage.getItem('projectmanager'))
-        let project = storage.projects[props.projectID];
+        let project
         let i;
+        let projectPlace;
+
+
+        for (i = 0; i < storage.projects.length; i++) {
+            if (storage.projects[i].projectID === props.projectID) {
+                project = storage.projects[i];
+                projectPlace = i;
+
+            }
+        }
 
 
         let subTaskText = document.querySelector('.sub-task-input').value;
@@ -159,15 +159,24 @@ const TaskView = (props) => {
             ID: Math.floor(Math.random() * 1000)
         }
 
+
+
+
+
+
         for (i = 0; i < project.projectTasks.length; i++) {
             if (props.data.taskID === project.projectTasks[i].taskID) {
                 project.projectTasks[i].subTasks.push(newSubTask)
-                storage.projects[props.projectID] = project
-                localStorage.setItem('projectmanager', JSON.stringify(storage));
+                storage.projects[projectPlace] = project
+
             }
         }
 
 
+
+        localStorage.setItem('projectmanager', JSON.stringify(storage));
+
+        console.log(JSON.parse(localStorage.getItem('projectmanager')))
         oldTasks.push(newSubTask)
 
         setSubTasks(oldTasks)
@@ -175,7 +184,7 @@ const TaskView = (props) => {
         setButtonsContainer('add-task-buttons-container-closed')
         setsubTaskState(0)
 
-        props.updateProject(storage.projects[props.projectID])
+        props.updateProject(storage.projects[projectPlace])
 
 
 
@@ -221,17 +230,35 @@ const TaskView = (props) => {
 
     function moveTask(projectID, taskID, newPlace, previous) {
 
+
+
+
+
         let storage = JSON.parse(localStorage.getItem('projectmanager'))
-        let project = storage.projects[projectID];
-        let i;
-        for (i = 0; i < project.projectTasks.length; i++) {
-            if (project.projectTasks[i].taskID === taskID) {
-                project.projectTasks[i].taskType = newPlace
-                storage.projects[projectID] = project;
-                localStorage.setItem('projectmanager', JSON.stringify(storage))
-                props.updateProject(storage.projects[props.projectID])
+
+        let i, j;
+
+        for (i = 0; i < storage.projects.length; i++) {
+            if (storage.projects[i].projectID === projectID) {
+
+                let project = storage.projects[i];
+
+
+
+                for (j = 0; j < project.projectTasks.length; j++) {
+                    if (project.projectTasks[j].taskID === taskID) {
+                        project.projectTasks[j].taskType = newPlace
+                        storage.projects[i] = project;
+                        localStorage.setItem('projectmanager', JSON.stringify(storage))
+                        props.updateProject(storage.projects[i])
+                    }
+                }
             }
         }
+
+
+
+
         props.setTaskView(0)
     }
 

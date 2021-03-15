@@ -1,15 +1,17 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import MyTasks from "../MyTasks/MyTasks"
 import ProjectSubHeading from '../ProjectSubHeading/ProjectSubHeading';
 import ProjectTasks from "../ProjectTasks/ProjectTasks"
 import TaskView from "../TaskView/TaskView"
+import AddTaskView from "../AddTaskView/AddTaskView"
 
 import "./ProjectManager.css"
 const ProjectManager = (props) => {
 
+    const [projects, setProjects] = useState({ projects: [] })
 
     const [viewState, setViewState] = useState(0)
-    const [projects, setProjects] = useState(JSON.parse(localStorage.getItem('projectmanager')))
+
     const [projectData, setProjectData] = useState()
     const [activeTitle, setActiveTitle] = useState("My Tasks");
 
@@ -19,8 +21,78 @@ const ProjectManager = (props) => {
     const [projectMenu, setProjectMenu] = useState(0)
     const [deleteProject, setDeleteProject] = useState(0)
 
+
+
+    useEffect(() => {
+        if (localStorage.getItem('projectmanager') === null) {
+            localStorage.setItem('projectmanager', JSON.stringify({
+                myTasks: [],
+                projects: [
+                    {
+                        projectID: 0,
+                        projectTitle: "Black Box",
+                        projectTasks: [
+
+                            {
+                                taskTitle: "First Task",
+                                taskDescription: "This is just a really short description of what is going on",
+                                taskLabels: ["Development", "Design"],
+                                subTasks: [],
+                                taskComments: [],
+                                taskType: "todo",
+                                taskID: Math.floor(Math.random() * 1000)
+                            },
+                            {
+                                taskTitle: "Second Task",
+                                taskDescription: "This is just a really short description of what is going on",
+                                taskLabels: ["Development", "Design"],
+                                subTasks: [],
+                                taskComments: [],
+                                taskType: "todo",
+                                taskID: Math.floor(Math.random() * 1000)
+                            }
+                            ,
+                            {
+                                taskTitle: "Smirtk",
+                                taskDescription: "This is just a really short description of what is going on",
+                                taskLabels: ["Development", "Design"],
+                                subTasks: [],
+                                taskComments: [],
+                                taskType: "in-progress",
+                                taskID: Math.floor(Math.random() * 1000)
+                            },
+                            {
+                                taskTitle: "Second Task",
+                                taskDescription: "This is just a really short description of what is going on",
+                                taskLabels: ["Development", "Design"],
+                                subTasks: [],
+                                taskComments: [],
+                                taskType: "stuck",
+                                taskID: Math.floor(Math.random() * 1000)
+                            },
+                            {
+                                taskTitle: "Second Task",
+                                taskDescription: "This is just a really short description of what is going on",
+                                taskLabels: ["Development", "Design"],
+                                subTasks: [],
+                                taskComments: [],
+                                taskType: "complete",
+                                taskID: Math.floor(Math.random() * 1000)
+                            }]
+                    }
+
+                ]
+            }))
+            setProjects(JSON.parse(localStorage.getItem('projectmanager')))
+        }
+        else {
+            setProjects(JSON.parse(localStorage.getItem('projectmanager')))
+        }
+    }, [])
+
+
     function renderState() {
-        if (viewState === 0) {
+        if (viewState === 0 && localStorage.getItem('projectmanager') != null) {
             return (<MyTasks tasks={JSON.parse(localStorage.getItem('projectmanager')).myTasks} />)
         }
         else if (viewState === 1) {
@@ -33,6 +105,7 @@ const ProjectManager = (props) => {
 
             let i;
             for (i = 0; i < projectData.projectTasks.length; i++) {
+
                 if (projectData.projectTasks[i].taskType === 'todo') {
                     todos.push(projectData.projectTasks[i])
                 }
@@ -56,6 +129,7 @@ const ProjectManager = (props) => {
 
 
     function updateProject(updates) {
+
         setProjectData(updates)
         let storage = JSON.parse(localStorage.getItem('projectmanager'))
         setProjects(storage)
@@ -66,11 +140,13 @@ const ProjectManager = (props) => {
 
         setProjectData(data)
 
+
         setTaskView(0)
         setActiveTitle(data.projectTitle)
         setViewState(1)
 
         console.log(data)
+
 
     }
 
@@ -123,33 +199,42 @@ const ProjectManager = (props) => {
     function renderAddTask() {
         if (addTaskState === 1) {
 
-            return (<TaskView data={taskData} new={true} closeTask={changeTaskView} type={0} projectID={projectData.projectID} updateProject={updateProject} />)
+            return (<AddTaskView data={taskData} new={true} closeTask={changeTaskView} type={0} projectID={projectData.projectID} updateProject={updateProject} />)
         }
     }
 
     function deleteTask(taskID, projectID, place) {
 
         let storage = JSON.parse(localStorage.getItem("projectmanager"))
-        let project = storage.projects[projectID]
 
-        if (projectID === projectData.projectID) {
+        let j;
 
-            let i;
-            for (i = 0; i < project.projectTasks.length; i++) {
+        for (j = 0; j < storage.projects.length; j++) {
+            if (storage.projects[j].projectID === projectID) {
+                let project = storage.projects[j]
+                let i;
+                for (i = 0; i < project.projectTasks.length; i++) {
 
-                if (taskID === project.projectTasks[i].taskID) {
-                    project.projectTasks.splice(i, 1)
+                    if (taskID === project.projectTasks[i].taskID) {
+                        project.projectTasks.splice(i, 1)
+                    }
+
                 }
 
+
+                storage[projectID] = project
+                localStorage.setItem('projectmanager', JSON.stringify(storage))
+                setProjectData(storage[projectID])
+
+                setProjects(storage)
             }
-
-
-            storage[projectID] = project
-            localStorage.setItem('projectmanager', JSON.stringify(storage))
-            setProjectData(storage[projectID])
-
-            setProjects(storage)
         }
+
+
+
+
+
+
         setTimeout(() => { setTaskView(0) }, 1)
     }
 
@@ -221,10 +306,10 @@ const ProjectManager = (props) => {
 
     function addProject() {
         let storage = JSON.parse(localStorage.getItem("projectmanager"))
-        let theLength = storage.projects.length;
+
         let projectTitle = document.querySelector('.project-title-input').value
         storage.projects.push({
-            projectID: theLength,
+            projectID: Math.floor(Math.random() * 5000),
             projectTitle: projectTitle,
             projectTasks: []
         })
