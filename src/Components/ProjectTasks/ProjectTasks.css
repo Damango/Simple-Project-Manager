@@ -35,4 +35,27 @@ margin-top: 20px;
     width: 23%;
     height: 90%;
     padding: 5px;
+    padding-right: 15px;
+    overflow-x: hidden;
 }
+
+/* width */
+::-webkit-scrollbar {
+    border-radius: 10px;
+    width: 3px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #2f3640;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: gray
+  }

@@ -128,6 +128,16 @@ const ProjectManager = (props) => {
     }
 
 
+    function renderCreateTask() {
+        if (viewState === 0) {
+            return ('')
+        }
+        else {
+            return (<button className="create-task-button" onClick={() => { setAddTaskState(1) }}>Create Task +</button>)
+        }
+    }
+
+
     function updateProject(updates) {
 
         setProjectData(updates)
@@ -432,7 +442,7 @@ const ProjectManager = (props) => {
         </div>
 
         <div className="main-view-container">
-            <div className="main-view-header">{activeTitle} <i className="fas fa-cog project-settings" onClick={openProjectDelete}></i>{renderProjectDelete()} <button className="create-task-button" onClick={() => { setAddTaskState(1) }}>Create Task +</button></div>
+            <div className="main-view-header">{activeTitle} <i className="fas fa-cog project-settings" onClick={openProjectDelete}></i>{renderProjectDelete()} {renderCreateTask()}</div>
 
             <div className="main-view">
 
