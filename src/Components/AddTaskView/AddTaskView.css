@@ -4,7 +4,132 @@
     left: 50%;
     transform: translate(-50%, -50%);
     background-color: white;
-    width: 500px;
-    height: 500px;
+    width:45%;
+    border-radius: 5px;
+    box-shadow: 0px 0px 5px 2px black;
     padding: 20px;
 }
+
+.label-header{
+    margin-top: 20px;
+    font-size: 20px;
+    font-family: Roboto;
+    font-weight: bold;
+}
+
+
+.label-selection{
+    
+    margin-top: 20px;
+    margin-bottom: 50px;
+}
+
+.label{
+    padding: 8px 12px;
+    margin-right: 10px;
+    border-style: none;
+}
+
+.label:hover{
+    cursor: pointer;
+}
+
+.dev-label{
+    position: relative;
+    top: 0px;
+    color:white;
+    background-color:#136dff; 
+    font-family:"Open Sans";
+    font-weight:bold;
+    font-size: 16px;
+    transition: 0.3s;
+}
+
+
+
+.dev-label-selected{
+    position: relative;
+    top: -20px;
+    color:white;
+    background-color:#0f408f; 
+    font-family:"Open Sans";
+    font-weight:bold;
+    font-size: 16px;
+    transition: 0.3s;
+}
+
+.design-label{
+    position: relative;
+    top: 0px;
+    color:white;
+    background-color: #8e44ad;
+    font-family:"Open Sans";
+    font-weight:bold;
+    font-size: 16px;
+    transition: 0.3s;
+   
+}
+
+.design-label-selected{
+
+    position: relative;
+    top: -20px;
+    color:white;
+    background-color:#491e5c; 
+    font-family:"Open Sans";
+    font-weight:bold;
+    font-size: 16px;
+    transition: 0.3s;
+   
+}
+
+.eng-label{
+    position: relative;
+    top: 0px;
+    color:white;
+    background-color: #e67e22;
+    font-family:"Open Sans";
+    font-weight:bold;
+    font-size: 16px;
+   transition: 0.3s;
+}
+
+
+.eng-label-selected{
+
+    position: relative;
+    top: -20px;
+    color:white;
+    background-color:#8f4e15;
+    font-family:"Open Sans";
+    font-weight:bold;
+    font-size: 16px;
+    transition: 0.3s;
+   
+}
+
+.research-label{
+    position: relative;
+    top: 0px;
+    color:white;
+    background-color: #27ae60;
+    font-family:"Open Sans";
+    font-weight:bold;
+    font-size: 16px;
+    transition: 0.3s;
+    
+}
+
+.research-label-selected{
+
+    position: relative;
+    top: -20px;
+    color:white;
+    background-color:#166437;
+    font-family:"Open Sans";
+    font-weight:bold;
+    font-size: 16px;
+    transition: 0.3s;
+   
+}
+

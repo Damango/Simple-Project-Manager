@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import SubTask from "./SubTask/SubTask"
 import "./TaskView.css"
 
+
 const TaskView = (props) => {
 
     let [theStyle, setTheStyle] = useState('task-view-container');
@@ -40,55 +41,39 @@ const TaskView = (props) => {
 
 
 
-    if (props.new === true) {
-
-
-        return (<div className={theStyle}>
-            <div className="close-task-view" onClick={() => { props.closeTask("close") }}>X</div>
-
-            <div id="thetest" className="task-title-input-container"><input className="task-title-input" placeholder="Enter Title" /></div>
-            <div className="task-description-input-container"><textarea className="description-input" placeholder="Enter Description" /></div>
-
-            <button className="submit-task-button" >Submit +</button>
-        </div>)
-    }
-
-
 
 
 
 
     /* CURRENTLY CREATED TASKS */
 
+    return (<div className={theStyle}>
+        <div className="close-task-view" onClick={() => { props.closeTask("close") }}>X</div>
+
+        <div className="task-view-title">{props.data.taskTitle}</div><div className="move-container"><button className="move-button" onClick={moveOptions}>MOVE</button>{renderMoveOptions()}</div>
+        <div className="task-description">{props.data.taskDescription}</div>
+
+        <div className="task-view-labels-container">
+            {props.data.taskLabels.map((label) => <div className={"task-view-label " + label.toLowerCase()}>{label}</div>)}
+        </div>
+        <div className="add-sub-tasks-container">
+
+            <div className="sub-task-container-header">Sub Tasks</div>
+
+            {subTasks.map((task) => <SubTask text={task.text} data={task} projectID={props.projectID} taskID={props.data.taskID} deleteSubTask={deleteSubTask} />)}
+            <div className="sub-task-container-new">{renderAddTaskState()}</div>
 
 
+            <div className={buttonsContainer}>
+                <button className={buttonState} onClick={addSubTask}>Add Sub Task + </button>
 
-
-
-    else {
-        return (<div className={theStyle}>
-            <div className="close-task-view" onClick={() => { props.closeTask("close") }}>X</div>
-
-            <div className="task-view-title">{props.data.taskTitle}</div><div className="move-container"><button className="move-button" onClick={moveOptions}>MOVE</button>{renderMoveOptions()}</div>
-            <div className="task-description">{props.data.taskDescription}</div>
-            <div className="add-sub-tasks-container">
-
-                <div className="sub-task-container-header">Sub Tasks</div>
-
-                {subTasks.map((task) => <SubTask text={task.text} data={task} projectID={props.projectID} taskID={props.data.taskID} deleteSubTask={deleteSubTask} />)}
-                <div className="sub-task-container-new">{renderAddTaskState()}</div>
-
-
-                <div className={buttonsContainer}>
-                    <button className={buttonState} onClick={addSubTask}>Add Sub Task + </button>
-
-                    <button className="cancel-button" onClick={() => { setsubTaskState(0); setButtonsContainer('add-task-buttons-container-closed') }}>Cancel</button>
-                </div>
+                <button className="cancel-button" onClick={() => { setsubTaskState(0); setButtonsContainer('add-task-buttons-container-closed') }}>Cancel</button>
             </div>
+        </div>
 
 
-        </div>)
-    }
+    </div>)
+
 
 
     function deleteSubTask(subTaskID) {

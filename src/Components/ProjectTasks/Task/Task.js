@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
+import TaskLabel from "./TaskLabel/TaskLabel"
 import "./Task.css"
 const Task = (props) => {
 
 
-    const [optionState, setOptionState] = useState(0)
+    const [optionState, setOptionState] = useState(0);
+    let allLabels = props.data.taskLabels;
+    let viewLabels = [allLabels[0], allLabels[1]];
 
 
     function openTaskOptions() {
@@ -15,6 +18,12 @@ const Task = (props) => {
             setOptionState(1)
         }
 
+    }
+
+    function extraLabelCount() {
+        if (allLabels.length > 2) {
+            return (<div className="extra-label-count">+{allLabels.length - 2}</div>)
+        }
     }
 
 
@@ -49,6 +58,9 @@ const Task = (props) => {
             <div className="task-sub-task-count">{props.data.subTasks.length}</div>
             <div className="task-comments-count"><i class="far fa-comment"></i>{props.data.taskComments.length}</div>
 
+
+
+            <div className="task-labels-container">{viewLabels.map((label) => <TaskLabel text={label} />)} {extraLabelCount()}</div>
 
 
         </div>
