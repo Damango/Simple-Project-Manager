@@ -326,6 +326,7 @@ const ProjectManager = (props) => {
 
         localStorage.setItem('projectmanager', JSON.stringify(storage))
         setProjects(storage)
+        addProjectMenu()
 
     }
 

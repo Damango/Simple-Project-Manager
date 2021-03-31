@@ -29,15 +29,28 @@ const Task = (props) => {
 
 
     function renderOptions() {
-
-
         if (optionState === 1) {
             return (<div className="options-container">
                 <div className="delete-option" onClick={() => { props.deleteTask(props.data.taskID, props.projectID, props.data.taskType); setOptionState(0) }}>DELETE OPTION</div>
             </div>)
         }
 
+    }
 
+
+
+    function renderCompleteTask(){
+
+        if(props.data.taskType === 'complete'){
+            return(<div className="completed-badge">Complete <i className="fas fa-check"></i></div>)
+        }
+
+        else{
+            return(<span>
+                 <div className="task-sub-task-count">{props.data.subTasks.length}</div>
+            <div className="task-comments-count"><i className="far fa-comment"></i>{props.data.taskComments.length}</div>
+            </span>)
+        }
 
 
     }
@@ -55,8 +68,10 @@ const Task = (props) => {
 
                 {props.data.taskDescription}
             </div>
-            <div className="task-sub-task-count">{props.data.subTasks.length}</div>
-            <div className="task-comments-count"><i className="far fa-comment"></i>{props.data.taskComments.length}</div>
+
+
+
+           {renderCompleteTask()}
 
 
 
