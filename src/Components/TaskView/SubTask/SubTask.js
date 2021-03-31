@@ -7,7 +7,7 @@ const SubTask = (props) => {
     function deleteSubTask() {
 
         props.deleteSubTask(props.data.ID)
-
+        
     }
 
 

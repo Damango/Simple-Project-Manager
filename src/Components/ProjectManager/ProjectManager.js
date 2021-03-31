@@ -423,7 +423,8 @@ const ProjectManager = (props) => {
                                     changeView={changeView}
                                     data={project}
                                     projectID={project.projectID}
-                                    count={project.projectTasks.length} />)}
+                                    count={project.projectTasks.length}
+                                    key={project.projectID} />)}
 
                             {renderAddProject()}
                             <button className="add-project-button" onClick={addProjectMenu}>Add Project +</button>

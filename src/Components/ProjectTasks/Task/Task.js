@@ -42,7 +42,7 @@ const Task = (props) => {
 
     }
     return (<div className="task-container" >
-        <div className="task-options-container" onClick={() => { openTaskOptions(); console.log(props.data) }}><i class="fas fa-ellipsis-v"></i></div>
+        <div className="task-options-container" onClick={() => { openTaskOptions(); console.log(props.data) }}><i className="fas fa-ellipsis-v"></i></div>
         {renderOptions()}
         <div className="task-body-container" onClick={() => { props.openTask(props.data, 1); }}>
 
@@ -56,11 +56,11 @@ const Task = (props) => {
                 {props.data.taskDescription}
             </div>
             <div className="task-sub-task-count">{props.data.subTasks.length}</div>
-            <div className="task-comments-count"><i class="far fa-comment"></i>{props.data.taskComments.length}</div>
+            <div className="task-comments-count"><i className="far fa-comment"></i>{props.data.taskComments.length}</div>
 
 
 
-            <div className="task-labels-container">{viewLabels.map((label) => <TaskLabel text={label} />)} {extraLabelCount()}</div>
+            <div className="task-labels-container">{viewLabels.map((label) => <TaskLabel text={label} key={Math.floor(Math.random() * 500)}/>)} {extraLabelCount()}</div>
 
 
         </div>
