@@ -93,7 +93,7 @@ const ProjectManager = (props) => {
 
     function renderState() {
         if (viewState === 0 && localStorage.getItem('projectmanager') != null) {
-            return (<MyTasks tasks={JSON.parse(localStorage.getItem('projectmanager')).myTasks} />)
+            return (<MyTasks myTasksView={activeTitle} tasks={JSON.parse(localStorage.getItem('projectmanager')).myTasks} />)
         }
         else if (viewState === 1) {
 
@@ -329,8 +329,19 @@ const ProjectManager = (props) => {
 
     }
 
-    /* localStorage.setItem('projectmanager', JSON.stringify({
-         myTasks: [],
+     /*localStorage.setItem('projectmanager', JSON.stringify({
+         myTasks: 
+            { todayTasks: [
+                {text: "Test Today Task",
+                    ID: Math.floor(Math.random() * 1000),
+                    date:  '03'+ '/' + '31' + '/' + '2021'}
+            ],
+            previousTasks: [{text: "Test Today Task",
+            ID: Math.floor(Math.random() * 1000),
+            date:  '03'+ '/' + '31' + '/' + '2020'}],
+        upcomingTasks: []
+    }
+         ,
          projects: [
              {
                  projectID: 0,
