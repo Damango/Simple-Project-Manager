@@ -407,7 +407,7 @@ const ProjectManager = (props) => {
 
 
     return (<div className="project-manager-container">
-
+      
         <div className="side-bar-container">
 
 
@@ -436,7 +436,7 @@ const ProjectManager = (props) => {
                                     data={project}
                                     projectID={project.projectID}
                                     count={project.projectTasks.length}
-                                    key={project.projectID} />)}
+                                    key={String(project.projectTitle + project.projectID)} />)}
 
                             {renderAddProject()}
                             <button className="add-project-button" onClick={addProjectMenu}>Add Project +</button>

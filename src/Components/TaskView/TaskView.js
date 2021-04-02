@@ -60,7 +60,7 @@ const TaskView = (props) => {
 
             <div className="sub-task-container-header">Sub Tasks</div>
 
-            {subTasks.map((task) => <SubTask text={task.text} data={task} projectID={props.projectID} taskID={props.data.taskID} deleteSubTask={deleteSubTask} key={Math.floor(Math.random() * 500)} />)}
+            {subTasks.map((task) => <SubTask text={task.text} data={task} projectID={props.projectID} taskID={props.data.taskID} deleteSubTask={deleteSubTask} completeSubTask={completeSubTask} key={String(task.text + Math.floor(Math.random() * 5000))} />)}
             <div className="sub-task-container-new">{renderAddTaskState()}</div>
 
 
@@ -109,6 +109,39 @@ const TaskView = (props) => {
         props.updateProject(storage.projects[projectPlace])
     }
 
+    function completeSubTask(subTaskID) {
+        let i, j, k;
+        let storage = JSON.parse(localStorage.getItem('projectmanager'));
+        let project;
+
+        let projectPlace;
+
+
+        for (i = 0; i < storage.projects.length; i++) {
+            if (storage.projects[i].projectID === props.projectID) {
+                project = storage.projects[i];
+                projectPlace = i;
+                for (k = 0; k < storage.projects[projectPlace].projectTasks.length; k++) {
+                    if (storage.projects[projectPlace].projectTasks[k].taskID === props.data.taskID) {
+                        for (j = 0; j < storage.projects[projectPlace].projectTasks[k].subTasks.length; j++) {
+                            if (storage.projects[projectPlace].projectTasks[k].subTasks[j].ID === subTaskID) {
+                                storage.projects[projectPlace].projectTasks[k].subTasks[j].complete = true;
+                                setSubTasks(storage.projects[projectPlace].projectTasks[k].subTasks)
+
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        localStorage.setItem('projectmanager', JSON.stringify(storage))
+
+        //setsubTaskState(0)
+
+        props.updateProject(storage.projects[projectPlace])
+    }
+
 
 
     function addSubTask() {
@@ -131,7 +164,8 @@ const TaskView = (props) => {
         let subTaskText = document.querySelector('.sub-task-input').value;
         let newSubTask = {
             text: subTaskText,
-            ID: Math.floor(Math.random() * 1000)
+            ID: Math.floor(Math.random() * 1000),
+            complete: false
         }
 
         for (i = 0; i < project.projectTasks.length; i++) {

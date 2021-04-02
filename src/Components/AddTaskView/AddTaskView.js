@@ -22,7 +22,7 @@ const AddTaskView = (props) => {
         let storage = JSON.parse(localStorage.getItem('projectmanager'))
         let title = document.querySelector('.task-title-input').value;
         let description = document.querySelector('.description-input').value;
-        console.log(title)
+       
         newTask = {
             taskTitle: title,
             taskDescription: description,
@@ -33,7 +33,7 @@ const AddTaskView = (props) => {
             taskID: Math.floor(Math.random() * 10000)
         }
 
-        console.log(newTask)
+    
 
 
 
@@ -51,7 +51,7 @@ const AddTaskView = (props) => {
 
 
 
-        console.log(props.projectID)
+ 
 
     }
 
@@ -81,8 +81,6 @@ const AddTaskView = (props) => {
             theArray.push(label)
             setTheTaskLabels(theArray)
         }
-
-        console.log(theTaskLabels)
 
     }
 
