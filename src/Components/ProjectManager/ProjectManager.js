@@ -26,7 +26,11 @@ const ProjectManager = (props) => {
     useEffect(() => {
         if (localStorage.getItem('projectmanager') === null) {
             localStorage.setItem('projectmanager', JSON.stringify({
-                myTasks: [],
+                myTasks: {
+                    todayTasks: [],
+                    upcomingTasks: [],
+                    previousTasks: []
+                },
                 projects: [
                     {
                         projectID: 0,
@@ -330,75 +334,75 @@ const ProjectManager = (props) => {
 
     }
 
-     /*localStorage.setItem('projectmanager', JSON.stringify({
-         myTasks: 
-            { todayTasks: [
-                {text: "Test Today Task",
-                    ID: Math.floor(Math.random() * 1000),
-                    date:  '03'+ '/' + '31' + '/' + '2021'}
-            ],
-            previousTasks: [{text: "Test Today Task",
-            ID: Math.floor(Math.random() * 1000),
-            date:  '03'+ '/' + '31' + '/' + '2020'}],
-        upcomingTasks: []
-    }
-         ,
-         projects: [
-             {
-                 projectID: 0,
-                 projectTitle: "Black Box",
-                 projectTasks: [
+    /*localStorage.setItem('projectmanager', JSON.stringify({
+        myTasks: 
+           { todayTasks: [
+               {text: "Test Today Task",
+                   ID: Math.floor(Math.random() * 1000),
+                   date:  '03'+ '/' + '31' + '/' + '2021'}
+           ],
+           previousTasks: [{text: "Test Today Task",
+           ID: Math.floor(Math.random() * 1000),
+           date:  '03'+ '/' + '31' + '/' + '2020'}],
+       upcomingTasks: []
+   }
+        ,
+        projects: [
+            {
+                projectID: 0,
+                projectTitle: "Black Box",
+                projectTasks: [
  
-                     {
-                         taskTitle: "First Task",
-                         taskDescription: "This is just a really short description of what is going on",
-                         taskLabels: ["Development", "Design"],
-                         subTasks: [],
-                         taskComments: [],
-                         taskType: "todo",
-                         taskID: Math.floor(Math.random() * 1000)
-                     },
-                     {
-                         taskTitle: "Second Task",
-                         taskDescription: "This is just a really short description of what is going on",
-                         taskLabels: ["Development", "Design"],
-                         subTasks: [],
-                         taskComments: [],
-                         taskType: "todo",
-                         taskID: Math.floor(Math.random() * 1000)
-                     }
-                     ,
-                     {
-                         taskTitle: "Smirtk",
-                         taskDescription: "This is just a really short description of what is going on",
-                         taskLabels: ["Development", "Design"],
-                         subTasks: [],
-                         taskComments: [],
-                         taskType: "in-progress",
-                         taskID: Math.floor(Math.random() * 1000)
-                     },
-                     {
-                         taskTitle: "Second Task",
-                         taskDescription: "This is just a really short description of what is going on",
-                         taskLabels: ["Development", "Design"],
-                         subTasks: [],
-                         taskComments: [],
-                         taskType: "stuck",
-                         taskID: Math.floor(Math.random() * 1000)
-                     },
-                     {
-                         taskTitle: "Second Task",
-                         taskDescription: "This is just a really short description of what is going on",
-                         taskLabels: ["Development", "Design"],
-                         subTasks: [],
-                         taskComments: [],
-                         taskType: "complete",
-                         taskID: Math.floor(Math.random() * 1000)
-                     }]
-             }
+                    {
+                        taskTitle: "First Task",
+                        taskDescription: "This is just a really short description of what is going on",
+                        taskLabels: ["Development", "Design"],
+                        subTasks: [],
+                        taskComments: [],
+                        taskType: "todo",
+                        taskID: Math.floor(Math.random() * 1000)
+                    },
+                    {
+                        taskTitle: "Second Task",
+                        taskDescription: "This is just a really short description of what is going on",
+                        taskLabels: ["Development", "Design"],
+                        subTasks: [],
+                        taskComments: [],
+                        taskType: "todo",
+                        taskID: Math.floor(Math.random() * 1000)
+                    }
+                    ,
+                    {
+                        taskTitle: "Smirtk",
+                        taskDescription: "This is just a really short description of what is going on",
+                        taskLabels: ["Development", "Design"],
+                        subTasks: [],
+                        taskComments: [],
+                        taskType: "in-progress",
+                        taskID: Math.floor(Math.random() * 1000)
+                    },
+                    {
+                        taskTitle: "Second Task",
+                        taskDescription: "This is just a really short description of what is going on",
+                        taskLabels: ["Development", "Design"],
+                        subTasks: [],
+                        taskComments: [],
+                        taskType: "stuck",
+                        taskID: Math.floor(Math.random() * 1000)
+                    },
+                    {
+                        taskTitle: "Second Task",
+                        taskDescription: "This is just a really short description of what is going on",
+                        taskLabels: ["Development", "Design"],
+                        subTasks: [],
+                        taskComments: [],
+                        taskType: "complete",
+                        taskID: Math.floor(Math.random() * 1000)
+                    }]
+            }
  
-         ]
-     }))*/
+        ]
+    }))*/
 
 
     if (localStorage.getItem("projectmanager") === null) {
@@ -407,7 +411,7 @@ const ProjectManager = (props) => {
 
 
     return (<div className="project-manager-container">
-      
+
         <div className="side-bar-container">
 
 
