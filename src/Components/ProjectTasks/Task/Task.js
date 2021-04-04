@@ -1,12 +1,21 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import TaskLabel from "./TaskLabel/TaskLabel"
 import "./Task.css"
 const Task = (props) => {
 
 
     const [optionState, setOptionState] = useState(0);
-    let allLabels = props.data.taskLabels;
-    let viewLabels = [allLabels[0], allLabels[1]];
+    const [theLabel, setTheLabel] = useState(props.data.taskLabels[0])
+
+
+
+
+
+
+    useEffect(() => {
+
+
+    }, [])
 
 
     function openTaskOptions() {
@@ -21,9 +30,19 @@ const Task = (props) => {
     }
 
     function extraLabelCount() {
-        if (allLabels.length > 2) {
-            return (<div className="extra-label-count">+{allLabels.length - 2}</div>)
+
+
+        let theLength = props.data.taskLabels.length;
+
+
+
+
+        if (theLength > 1) {
+            return (<div className="extra-label-count">+{theLength - 1}</div>)
         }
+
+
+
     }
 
 
@@ -39,16 +58,16 @@ const Task = (props) => {
 
 
 
-    function renderCompleteTask(){
+    function renderCompleteTask() {
 
-        if(props.data.taskType === 'complete'){
-            return(<div className="completed-badge">Complete <i className="fas fa-check"></i></div>)
+        if (props.data.taskType === 'complete') {
+            return (<div className="completed-badge">Complete <i className="fas fa-check"></i></div>)
         }
 
-        else{
-            return(<span>
-                 <div className="task-sub-task-count">{props.data.subTasks.length}</div>
-            <div className="task-comments-count"><i className="far fa-comment"></i>{props.data.taskComments.length}</div>
+        else {
+            return (<span>
+                <div className="task-sub-task-count">{props.data.subTasks.length}</div>
+                <div className="task-comments-count"><i className="far fa-comment"></i>{props.data.taskComments.length}</div>
             </span>)
         }
 
@@ -71,11 +90,11 @@ const Task = (props) => {
 
 
 
-           {renderCompleteTask()}
+            {renderCompleteTask()}
 
 
 
-            <div className="task-labels-container">{viewLabels.map((label) => <TaskLabel text={label} key={Math.floor(Math.random() * 500)}/>)} {extraLabelCount()}</div>
+            <div className="task-labels-container"><TaskLabel text={theLabel} /> {extraLabelCount()}</div>
 
 
         </div>
