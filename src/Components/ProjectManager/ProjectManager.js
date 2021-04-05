@@ -92,7 +92,16 @@ const ProjectManager = (props) => {
         else {
             setProjects(JSON.parse(localStorage.getItem('projectmanager')))
         }
+
+
+        if(window.screen.width <= 1400){
+
+        }
+
+
     }, [])
+
+
 
 
     function renderState() {
@@ -409,9 +418,22 @@ const ProjectManager = (props) => {
         //localStorage.setItem('projectmanager', JSON.stringify({});
     }
 
+    function changeSideBar(){
+
+        if(document.querySelector('.side-bar-container') != null){
+            document.querySelector('.side-bar-container').className = 'side-bar-container-closed'
+        }
+
+        else{
+            document.querySelector('.side-bar-container-closed').className = 'side-bar-container'
+        }
+        
+      
+    }
+
 
     return (<div className="project-manager-container">
-
+ <i className="fas fa-bars" onClick={changeSideBar}></i>
         <div className="side-bar-container">
 
 
@@ -420,6 +442,7 @@ const ProjectManager = (props) => {
                 <div className="side-bar-tasks">
 
                     <div className="side-bar-tasks-container my-tasks">
+                   
                         <div className="side-bar-task-header">My Tasks</div>
 
                         <div className="side-bar-sub-heading-container">
@@ -459,7 +482,7 @@ const ProjectManager = (props) => {
         </div>
 
         <div className="main-view-container">
-            <div className="main-view-header">{activeTitle} <i className="fas fa-cog project-settings" onClick={openProjectDelete}></i>{renderProjectDelete()} {renderCreateTask()}</div>
+            <div className="main-view-header"><span>{activeTitle}</span> <i className="fas fa-cog project-settings" onClick={openProjectDelete}></i>{renderProjectDelete()} {renderCreateTask()}</div>
 
             <div className="main-view">
 

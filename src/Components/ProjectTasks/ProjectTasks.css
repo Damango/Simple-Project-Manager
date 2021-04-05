@@ -1,62 +1,66 @@
-.project-tasks-container{
-position: relative;
-height: 100%;
-width: 100%;
+.project-tasks-container {
+	position: relative;
+	height: 100%;
+	width: 100%;
 
-margin-top: 20px;
+	margin-top: 20px;
 }
 
-
-
-.project-tasks-title{
-    background-color: white;
+.project-tasks-title {
+	background-color: white;
 }
 
+.project-tasks-wrapper {
+	position: relative;
 
-.project-tasks-wrapper{
-    position: relative;
- 
-   display: flex;
-   justify-content: space-between;
-   height: 100%;
-   
-
+	display: flex;
+	justify-content: space-between;
+	height: 100%;
 }
 
-.task-types-title{
-    margin-top: 5px;
-    margin-bottom: 20px;
-    font-weight: bold;
+.task-types-title {
+	margin-top: 5px;
+	margin-bottom: 20px;
+	font-weight: bold;
 }
 
-.task-column{
-    position: relative;
-    overflow-x:scroll;
-  border-radius: 3px;
-    width: 23%;
-    height: 90%;
-    padding: 5px;
-    padding-right: 15px;
-    overflow-x: hidden;
+.task-column {
+	position: relative;
+	overflow-x: scroll;
+	border-radius: 3px;
+	width: 23%;
+	height: 90%;
+	padding: 5px;
+	padding-right: 15px;
+	overflow-x: hidden;
 }
 
 /* width */
 ::-webkit-scrollbar {
-    border-radius: 10px;
-    width: 3px;
-  }
-  
-  /* Track */
-  ::-webkit-scrollbar-track {
-    background: #f1f1f1;
-  }
-  
-  /* Handle */
-  ::-webkit-scrollbar-thumb {
-    background: #2f3640;
-  }
-  
-  /* Handle on hover */
-  ::-webkit-scrollbar-thumb:hover {
-    background: gray
-  }
+	border-radius: 10px;
+	width: 3px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+	background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+	background: #2f3640;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+	background: gray;
+}
+
+@media only screen and (max-width: 1250px) {
+	.project-tasks-container {
+		width: 1500px;
+	}
+	.task-column {
+		width: 2000px !important;
+	}
+}
