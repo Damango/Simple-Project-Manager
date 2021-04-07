@@ -444,6 +444,7 @@ const ProjectManager = (props) => {
 
 
     return (<div className="project-manager-container">
+           {renderTaskView()}
  <i className="fas fa-bars" onClick={changeSideBar}></i>
         <div className="side-bar-container">
 
@@ -457,9 +458,9 @@ const ProjectManager = (props) => {
                         <div className="side-bar-task-header">My Tasks</div>
 
                         <div className="side-bar-sub-heading-container">
-                            <div className="side-bar-sub-heading" onClick={() => { setViewState(0); setActiveTitle('Today') }}>Today</div>
-                            <div className="side-bar-sub-heading" onClick={() => { setViewState(0); setActiveTitle('Upcoming') }}>Upcoming</div>
-                            <div className="side-bar-sub-heading" onClick={() => { setViewState(0); setActiveTitle('My Tasks') }}>All</div>
+                            <div className="side-bar-sub-heading" onClick={() => { setViewState(0); setActiveTitle('Today'); setTaskView(0) }}>Today</div>
+                            <div className="side-bar-sub-heading" onClick={() => { setViewState(0); setActiveTitle('Upcoming'); setTaskView(0) }}>Upcoming</div>
+                            <div className="side-bar-sub-heading" onClick={() => { setViewState(0); setActiveTitle('My Tasks'); setTaskView(0) }}>All</div>
                         </div>
                     </div>
 
@@ -498,7 +499,7 @@ const ProjectManager = (props) => {
             <div className="main-view">
 
                 {renderState()}
-                {renderTaskView()}
+             
                 {renderAddTask()}
 
             </div>
