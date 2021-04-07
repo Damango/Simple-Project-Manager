@@ -113,6 +113,23 @@
 	outline: none;
 }
 
+.create-task-button-mobile {
+	position: absolute;
+	right: 80px;
+	top: 50%;
+	display: none;
+	transform: translateY(-50%);
+	border-style: none;
+	color: white;
+	background-color: rgb(27, 156, 252);
+	padding: 8px 15px;
+	font-family: Roboto;
+	font-weight: bold;
+	font-size: 17px;
+	border-radius: 5px;
+	outline: none;
+}
+
 .add-project-button {
 	margin-top: 20px;
 	background-color: #2ecc71;
@@ -284,5 +301,14 @@
 	.fas-bars {
 		top: 0px !important;
 		color: red;
+	}
+
+	.create-task-button-mobile {
+		display: inline-block;
+		right: 50px;
+	}
+
+	.create-task-button {
+		display: none;
 	}
 }

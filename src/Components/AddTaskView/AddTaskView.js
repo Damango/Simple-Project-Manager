@@ -100,7 +100,7 @@ const AddTaskView = (props) => {
 
         <div className="close-task-view" onClick={() => { props.closeTask("close") }}>X</div>
 
-        <div id="thetest" className="task-title-input-container"><input className="task-title-input" placeholder="Enter Title" /></div>
+        <div className="task-title-input-container"><input className="task-title-input" placeholder="Enter Title" /></div>
         <div className="task-description-input-container"><textarea className="description-input" placeholder="Enter Description" /></div>
         <div className="label-header">Labels</div>
         <div className="label-selection">

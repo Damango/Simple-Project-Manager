@@ -4,6 +4,7 @@ import ProjectSubHeading from '../ProjectSubHeading/ProjectSubHeading';
 import ProjectTasks from "../ProjectTasks/ProjectTasks"
 import TaskView from "../TaskView/TaskView"
 import AddTaskView from "../AddTaskView/AddTaskView"
+import ProjectSettings from "../ProjectSettings/ProjectSettings"
 
 import "./ProjectManager.css"
 const ProjectManager = (props) => {
@@ -102,6 +103,13 @@ const ProjectManager = (props) => {
     }, [])
 
 
+    function renderSettingsPage(){
+        if(viewState === 7){
+            return(<ProjectSettings />)
+        }
+    }
+
+
 
 
     function renderState() {
@@ -138,6 +146,11 @@ const ProjectManager = (props) => {
 
             return (<ProjectTasks projectData={projectData} todos={todos} inProgress={inProgress} stuck={stuck} complete={complete} openTaskView={changeTaskView} deleteTask={deleteTask} type={0} projectID={projectData.projectID} />)
         }
+
+        else if(viewState === 7){
+            return(<ProjectSettings data={projectData} deleteProject={deleteTheProject}/>)
+        }
+
     }
 
 
@@ -146,7 +159,10 @@ const ProjectManager = (props) => {
             return ('')
         }
         else {
-            return (<button className="create-task-button" onClick={() => { setAddTaskState(1) }}>Create Task +</button>)
+            return (<div>
+                <button className="create-task-button-mobile" onClick={() => { setAddTaskState(1) }}>+</button>
+                <button className="create-task-button" onClick={() => { setAddTaskState(1) }}>Create Task +</button>
+                </div>)
         }
     }
 
@@ -262,12 +278,7 @@ const ProjectManager = (props) => {
     }
 
     function openProjectDelete() {
-        if (deleteProject === 0) {
-            setDeleteProject(1)
-        }
-        else if (deleteProject === 1) {
-            setDeleteProject(0)
-        }
+        setViewState(7)
 
     }
 

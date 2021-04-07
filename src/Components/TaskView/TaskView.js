@@ -50,7 +50,7 @@ const TaskView = (props) => {
     return (<div className={theStyle}>
         <div className="close-task-view" onClick={() => { props.closeTask("close") }}>X</div>
 
-        <div className="task-view-title">{props.data.taskTitle}</div><div className="move-container"><button className="move-button" onClick={moveOptions}>MOVE</button>{renderMoveOptions()}</div>
+        <div className="task-view-title">{props.data.taskTitle}</div><div className="move-container"><button className="move-button" onClick={moveOptions}>MOVE<i class="fas fa-arrow-right"></i></button>{renderMoveOptions()}</div>
         <div className="task-description">{props.data.taskDescription}</div>
 
         <div className="task-view-labels-container">
